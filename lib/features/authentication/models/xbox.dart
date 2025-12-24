@@ -32,3 +32,36 @@ class XboxLiveAuthenticateProperties
     required this.rpsTicket,
   });
 }
+
+@MappableClass(caseStyle: CaseStyle.pascalCase)
+class XboxLiveAuthenticationResponse
+    with XboxLiveAuthenticationResponseMappable {
+  final DateTime issueInstant;
+  final DateTime notAfter;
+
+  /// The XBL token
+  final String token;
+
+  final DisplayClaims displayClaims;
+
+  const XboxLiveAuthenticationResponse({
+    required this.issueInstant,
+    required this.notAfter,
+    required this.token,
+    required this.displayClaims,
+  });
+}
+
+@MappableClass(caseStyle: CaseStyle.camelCase)
+class DisplayClaims with DisplayClaimsMappable {
+  final List<Xui> xui;
+
+  const DisplayClaims({required this.xui});
+}
+
+@MappableClass(caseStyle: CaseStyle.camelCase)
+class Xui with XuiMappable {
+  final String uhs;
+
+  const Xui({required this.uhs});
+}

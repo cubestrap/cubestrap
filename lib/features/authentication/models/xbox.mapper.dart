@@ -438,3 +438,413 @@ class _XboxLiveAuthenticatePropertiesCopyWithImpl<$R, $Out>
       _XboxLiveAuthenticatePropertiesCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
+class XboxLiveAuthenticationResponseMapper
+    extends ClassMapperBase<XboxLiveAuthenticationResponse> {
+  XboxLiveAuthenticationResponseMapper._();
+
+  static XboxLiveAuthenticationResponseMapper? _instance;
+  static XboxLiveAuthenticationResponseMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(
+        _instance = XboxLiveAuthenticationResponseMapper._(),
+      );
+      DisplayClaimsMapper.ensureInitialized();
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'XboxLiveAuthenticationResponse';
+
+  static DateTime _$issueInstant(XboxLiveAuthenticationResponse v) =>
+      v.issueInstant;
+  static const Field<XboxLiveAuthenticationResponse, DateTime> _f$issueInstant =
+      Field('issueInstant', _$issueInstant, key: r'IssueInstant');
+  static DateTime _$notAfter(XboxLiveAuthenticationResponse v) => v.notAfter;
+  static const Field<XboxLiveAuthenticationResponse, DateTime> _f$notAfter =
+      Field('notAfter', _$notAfter, key: r'NotAfter');
+  static String _$token(XboxLiveAuthenticationResponse v) => v.token;
+  static const Field<XboxLiveAuthenticationResponse, String> _f$token = Field(
+    'token',
+    _$token,
+    key: r'Token',
+  );
+  static DisplayClaims _$displayClaims(XboxLiveAuthenticationResponse v) =>
+      v.displayClaims;
+  static const Field<XboxLiveAuthenticationResponse, DisplayClaims>
+  _f$displayClaims = Field(
+    'displayClaims',
+    _$displayClaims,
+    key: r'DisplayClaims',
+  );
+
+  @override
+  final MappableFields<XboxLiveAuthenticationResponse> fields = const {
+    #issueInstant: _f$issueInstant,
+    #notAfter: _f$notAfter,
+    #token: _f$token,
+    #displayClaims: _f$displayClaims,
+  };
+
+  static XboxLiveAuthenticationResponse _instantiate(DecodingData data) {
+    return XboxLiveAuthenticationResponse(
+      issueInstant: data.dec(_f$issueInstant),
+      notAfter: data.dec(_f$notAfter),
+      token: data.dec(_f$token),
+      displayClaims: data.dec(_f$displayClaims),
+    );
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static XboxLiveAuthenticationResponse fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<XboxLiveAuthenticationResponse>(map);
+  }
+
+  static XboxLiveAuthenticationResponse fromJson(String json) {
+    return ensureInitialized().decodeJson<XboxLiveAuthenticationResponse>(json);
+  }
+}
+
+mixin XboxLiveAuthenticationResponseMappable {
+  String toJson() {
+    return XboxLiveAuthenticationResponseMapper.ensureInitialized()
+        .encodeJson<XboxLiveAuthenticationResponse>(
+          this as XboxLiveAuthenticationResponse,
+        );
+  }
+
+  Map<String, dynamic> toMap() {
+    return XboxLiveAuthenticationResponseMapper.ensureInitialized()
+        .encodeMap<XboxLiveAuthenticationResponse>(
+          this as XboxLiveAuthenticationResponse,
+        );
+  }
+
+  XboxLiveAuthenticationResponseCopyWith<
+    XboxLiveAuthenticationResponse,
+    XboxLiveAuthenticationResponse,
+    XboxLiveAuthenticationResponse
+  >
+  get copyWith =>
+      _XboxLiveAuthenticationResponseCopyWithImpl<
+        XboxLiveAuthenticationResponse,
+        XboxLiveAuthenticationResponse
+      >(this as XboxLiveAuthenticationResponse, $identity, $identity);
+  @override
+  String toString() {
+    return XboxLiveAuthenticationResponseMapper.ensureInitialized()
+        .stringifyValue(this as XboxLiveAuthenticationResponse);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return XboxLiveAuthenticationResponseMapper.ensureInitialized().equalsValue(
+      this as XboxLiveAuthenticationResponse,
+      other,
+    );
+  }
+
+  @override
+  int get hashCode {
+    return XboxLiveAuthenticationResponseMapper.ensureInitialized().hashValue(
+      this as XboxLiveAuthenticationResponse,
+    );
+  }
+}
+
+extension XboxLiveAuthenticationResponseValueCopy<$R, $Out>
+    on ObjectCopyWith<$R, XboxLiveAuthenticationResponse, $Out> {
+  XboxLiveAuthenticationResponseCopyWith<
+    $R,
+    XboxLiveAuthenticationResponse,
+    $Out
+  >
+  get $asXboxLiveAuthenticationResponse => $base.as(
+    (v, t, t2) =>
+        _XboxLiveAuthenticationResponseCopyWithImpl<$R, $Out>(v, t, t2),
+  );
+}
+
+abstract class XboxLiveAuthenticationResponseCopyWith<
+  $R,
+  $In extends XboxLiveAuthenticationResponse,
+  $Out
+>
+    implements ClassCopyWith<$R, $In, $Out> {
+  DisplayClaimsCopyWith<$R, DisplayClaims, DisplayClaims> get displayClaims;
+  $R call({
+    DateTime? issueInstant,
+    DateTime? notAfter,
+    String? token,
+    DisplayClaims? displayClaims,
+  });
+  XboxLiveAuthenticationResponseCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
+    Then<$Out2, $R2> t,
+  );
+}
+
+class _XboxLiveAuthenticationResponseCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, XboxLiveAuthenticationResponse, $Out>
+    implements
+        XboxLiveAuthenticationResponseCopyWith<
+          $R,
+          XboxLiveAuthenticationResponse,
+          $Out
+        > {
+  _XboxLiveAuthenticationResponseCopyWithImpl(
+    super.value,
+    super.then,
+    super.then2,
+  );
+
+  @override
+  late final ClassMapperBase<XboxLiveAuthenticationResponse> $mapper =
+      XboxLiveAuthenticationResponseMapper.ensureInitialized();
+  @override
+  DisplayClaimsCopyWith<$R, DisplayClaims, DisplayClaims> get displayClaims =>
+      $value.displayClaims.copyWith.$chain((v) => call(displayClaims: v));
+  @override
+  $R call({
+    DateTime? issueInstant,
+    DateTime? notAfter,
+    String? token,
+    DisplayClaims? displayClaims,
+  }) => $apply(
+    FieldCopyWithData({
+      if (issueInstant != null) #issueInstant: issueInstant,
+      if (notAfter != null) #notAfter: notAfter,
+      if (token != null) #token: token,
+      if (displayClaims != null) #displayClaims: displayClaims,
+    }),
+  );
+  @override
+  XboxLiveAuthenticationResponse $make(CopyWithData data) =>
+      XboxLiveAuthenticationResponse(
+        issueInstant: data.get(#issueInstant, or: $value.issueInstant),
+        notAfter: data.get(#notAfter, or: $value.notAfter),
+        token: data.get(#token, or: $value.token),
+        displayClaims: data.get(#displayClaims, or: $value.displayClaims),
+      );
+
+  @override
+  XboxLiveAuthenticationResponseCopyWith<
+    $R2,
+    XboxLiveAuthenticationResponse,
+    $Out2
+  >
+  $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
+      _XboxLiveAuthenticationResponseCopyWithImpl<$R2, $Out2>($value, $cast, t);
+}
+
+class DisplayClaimsMapper extends ClassMapperBase<DisplayClaims> {
+  DisplayClaimsMapper._();
+
+  static DisplayClaimsMapper? _instance;
+  static DisplayClaimsMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = DisplayClaimsMapper._());
+      XuiMapper.ensureInitialized();
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'DisplayClaims';
+
+  static List<Xui> _$xui(DisplayClaims v) => v.xui;
+  static const Field<DisplayClaims, List<Xui>> _f$xui = Field('xui', _$xui);
+
+  @override
+  final MappableFields<DisplayClaims> fields = const {#xui: _f$xui};
+
+  static DisplayClaims _instantiate(DecodingData data) {
+    return DisplayClaims(xui: data.dec(_f$xui));
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static DisplayClaims fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<DisplayClaims>(map);
+  }
+
+  static DisplayClaims fromJson(String json) {
+    return ensureInitialized().decodeJson<DisplayClaims>(json);
+  }
+}
+
+mixin DisplayClaimsMappable {
+  String toJson() {
+    return DisplayClaimsMapper.ensureInitialized().encodeJson<DisplayClaims>(
+      this as DisplayClaims,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return DisplayClaimsMapper.ensureInitialized().encodeMap<DisplayClaims>(
+      this as DisplayClaims,
+    );
+  }
+
+  DisplayClaimsCopyWith<DisplayClaims, DisplayClaims, DisplayClaims>
+  get copyWith => _DisplayClaimsCopyWithImpl<DisplayClaims, DisplayClaims>(
+    this as DisplayClaims,
+    $identity,
+    $identity,
+  );
+  @override
+  String toString() {
+    return DisplayClaimsMapper.ensureInitialized().stringifyValue(
+      this as DisplayClaims,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return DisplayClaimsMapper.ensureInitialized().equalsValue(
+      this as DisplayClaims,
+      other,
+    );
+  }
+
+  @override
+  int get hashCode {
+    return DisplayClaimsMapper.ensureInitialized().hashValue(
+      this as DisplayClaims,
+    );
+  }
+}
+
+extension DisplayClaimsValueCopy<$R, $Out>
+    on ObjectCopyWith<$R, DisplayClaims, $Out> {
+  DisplayClaimsCopyWith<$R, DisplayClaims, $Out> get $asDisplayClaims =>
+      $base.as((v, t, t2) => _DisplayClaimsCopyWithImpl<$R, $Out>(v, t, t2));
+}
+
+abstract class DisplayClaimsCopyWith<$R, $In extends DisplayClaims, $Out>
+    implements ClassCopyWith<$R, $In, $Out> {
+  ListCopyWith<$R, Xui, XuiCopyWith<$R, Xui, Xui>> get xui;
+  $R call({List<Xui>? xui});
+  DisplayClaimsCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
+}
+
+class _DisplayClaimsCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, DisplayClaims, $Out>
+    implements DisplayClaimsCopyWith<$R, DisplayClaims, $Out> {
+  _DisplayClaimsCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<DisplayClaims> $mapper =
+      DisplayClaimsMapper.ensureInitialized();
+  @override
+  ListCopyWith<$R, Xui, XuiCopyWith<$R, Xui, Xui>> get xui => ListCopyWith(
+    $value.xui,
+    (v, t) => v.copyWith.$chain(t),
+    (v) => call(xui: v),
+  );
+  @override
+  $R call({List<Xui>? xui}) =>
+      $apply(FieldCopyWithData({if (xui != null) #xui: xui}));
+  @override
+  DisplayClaims $make(CopyWithData data) =>
+      DisplayClaims(xui: data.get(#xui, or: $value.xui));
+
+  @override
+  DisplayClaimsCopyWith<$R2, DisplayClaims, $Out2> $chain<$R2, $Out2>(
+    Then<$Out2, $R2> t,
+  ) => _DisplayClaimsCopyWithImpl<$R2, $Out2>($value, $cast, t);
+}
+
+class XuiMapper extends ClassMapperBase<Xui> {
+  XuiMapper._();
+
+  static XuiMapper? _instance;
+  static XuiMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = XuiMapper._());
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'Xui';
+
+  static String _$uhs(Xui v) => v.uhs;
+  static const Field<Xui, String> _f$uhs = Field('uhs', _$uhs);
+
+  @override
+  final MappableFields<Xui> fields = const {#uhs: _f$uhs};
+
+  static Xui _instantiate(DecodingData data) {
+    return Xui(uhs: data.dec(_f$uhs));
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static Xui fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<Xui>(map);
+  }
+
+  static Xui fromJson(String json) {
+    return ensureInitialized().decodeJson<Xui>(json);
+  }
+}
+
+mixin XuiMappable {
+  String toJson() {
+    return XuiMapper.ensureInitialized().encodeJson<Xui>(this as Xui);
+  }
+
+  Map<String, dynamic> toMap() {
+    return XuiMapper.ensureInitialized().encodeMap<Xui>(this as Xui);
+  }
+
+  XuiCopyWith<Xui, Xui, Xui> get copyWith =>
+      _XuiCopyWithImpl<Xui, Xui>(this as Xui, $identity, $identity);
+  @override
+  String toString() {
+    return XuiMapper.ensureInitialized().stringifyValue(this as Xui);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return XuiMapper.ensureInitialized().equalsValue(this as Xui, other);
+  }
+
+  @override
+  int get hashCode {
+    return XuiMapper.ensureInitialized().hashValue(this as Xui);
+  }
+}
+
+extension XuiValueCopy<$R, $Out> on ObjectCopyWith<$R, Xui, $Out> {
+  XuiCopyWith<$R, Xui, $Out> get $asXui =>
+      $base.as((v, t, t2) => _XuiCopyWithImpl<$R, $Out>(v, t, t2));
+}
+
+abstract class XuiCopyWith<$R, $In extends Xui, $Out>
+    implements ClassCopyWith<$R, $In, $Out> {
+  $R call({String? uhs});
+  XuiCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
+}
+
+class _XuiCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Xui, $Out>
+    implements XuiCopyWith<$R, Xui, $Out> {
+  _XuiCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<Xui> $mapper = XuiMapper.ensureInitialized();
+  @override
+  $R call({String? uhs}) =>
+      $apply(FieldCopyWithData({if (uhs != null) #uhs: uhs}));
+  @override
+  Xui $make(CopyWithData data) => Xui(uhs: data.get(#uhs, or: $value.uhs));
+
+  @override
+  XuiCopyWith<$R2, Xui, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
+      _XuiCopyWithImpl<$R2, $Out2>($value, $cast, t);
+}
+

@@ -32,17 +32,25 @@ class MyHomePage extends StatelessWidget {
             final xboxClient = await XboxClient.authenticate();
             final ticket = xboxClient.credentials.accessToken;
             final dio = Dio();
+            final body = XboxLiveAuthenticate(
+              tokenType: .jwt,
+              relyingParty: "http://auth.xboxlive.com",
+              properties: XboxLiveAuthenticateProperties(
+                authMethod: .rps,
+                siteName: "user.auth.xboxlive.com",
+                rpsTicket: "d=$ticket",
+              ),
+            ).toJson();
+
             final response = await dio.post(
               "https://user.auth.xboxlive.com/user/authenticate",
-              data: XboxLiveAuthenticate(
-                tokenType: .jwt,
-                relyingParty: "http://auth.xboxlive.com",
-                properties: XboxLiveAuthenticateProperties(
-                  authMethod: .rps,
-                  siteName: "user.auth.xboxlive.com",
-                  rpsTicket: ticket,
-                ),
-              ).toJson(),
+              data: body,
+              options: Options(
+                headers: {
+                  "Content-Type": "application/json",
+                  "Accept": "application/json",
+                },
+              ),
             );
           },
           child: Text("erm"),
