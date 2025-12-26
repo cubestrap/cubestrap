@@ -33,12 +33,13 @@ class MyHomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // final manifest = ref.watch(minecraftManifestProvider);
-    // final details = ref.watch(
-    //   minecraftVersionDetailsProvider(
-    //     "https://piston-meta.mojang.com/v1/packages/b9345ee364d36ef1c7ec26df6bf99d3e4a4393f5/26.1-snapshot-1.json",
-    //   ),
-    // );
+    final manifest = ref.watch(minecraftManifestProvider).value;
+    if (manifest != null) {
+      final details = ref.watch(
+        minecraftVersionDetailsProvider(manifest.versions.first),
+      );
+      // print(details);
+    }
     // print(details.value?.arguments?.game);
 
     return Scaffold(
