@@ -1,3 +1,5 @@
+import 'package:cubestrap/features/minecraft/providers/version_manifest.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:modrinth/modrinth.dart';
 
@@ -18,30 +20,38 @@ class Cubestrap extends StatelessWidget {
           brightness: .dark,
         ),
       ),
-      home: const MyHomePage(),
+      home: ProviderScope(child: MyHomePage()),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends ConsumerWidget {
   const MyHomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final manifest = ref.watch(minecraftManifestProvider);
+
     return Scaffold(
       body: Center(
-        child: FilledButton(
-          onPressed: () async {
-            // final xboxClient = await XboxClient.authenticate();
-            // final minecraftClient = await MinecraftAuthentication.authenticate(
-            //   accessToken: xboxClient.credentials.accessToken,
-            // );
-            final client = ModrinthDartApi();
-            final projects = await client.getProjectsApi().searchProjects(
-              query: "automation",
-            );
-          },
-          child: Text("Authenticate"),
+        child: Column(
+          mainAxisAlignment: .center,
+          children: [
+            FilledButton(
+              onPressed: () async {
+                // final xboxClient = await XboxClient.authenticate();
+                // final minecraftClient = await MinecraftAuthentication.authenticate(
+                //   accessToken: xboxClient.credentials.accessToken,
+                // );
+                final client = ModrinthDartApi();
+                final projects = await client.getProjectsApi().searchProjects(
+                  query: "automation",
+                );
+                print(projects);
+              },
+              child: Text("Authenticate"),
+            ),
+          ],
         ),
       ),
     );

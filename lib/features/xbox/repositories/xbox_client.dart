@@ -4,7 +4,6 @@ import 'package:url_launcher/url_launcher.dart';
 
 class XboxClient {
   static Future<oauth2.Client> authenticate() async {
-    // stolen from prism launcher for now
     // only for testing, will remove as soon as
     // microsoft approves mine
     final clientId = "";
