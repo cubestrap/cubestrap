@@ -107,13 +107,4 @@ class MinecraftRepository {
 
     return true;
   }
-
-  static String generateLaunchArguments(VersionArguments arguments) {
-    String args = "";
-    for (final arg in arguments.game) {
-      args += arg.values.join(" ");
-      args += " ";
-    }
-    return args;
-  }
 }

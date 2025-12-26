@@ -26,6 +26,7 @@ dependencies:
   path_provider: ^2.1.5
   flutter_dotenv: ^6.0.0
   hive_ce: ^2.16.0
+  process_run: ^1.2.4
 
 
 dev_dependencies:

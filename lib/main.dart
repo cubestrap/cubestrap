@@ -8,6 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_ce/hive.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:process_run/shell.dart';
 
 void main() async {
   await dotenv.load(fileName: ".env");
@@ -62,6 +63,13 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
           children: [
             FilledButton(
               onPressed: () async {
+                // final xboxClient = await XboxClient.authenticate();
+                // final auth = Hive.box('auth');
+                // await auth.put(
+                //   "minecraft-token",
+                //   xboxClient.credentials.accessToken,
+                // );
+
                 final manifest = await ref.read(
                   minecraftManifestProvider.future,
                 );
@@ -73,14 +81,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
 
                 await LauncherService.downloadLibraries(details.libraries);
 
-                // final xboxClient = await XboxClient.authenticate();
-                // final auth = Hive.box('auth');
-                // await auth.put(
-                //   "minecraft-token",
-                //   xboxClient.credentials.accessToken,
-                // );
-
-                // _genLaunchArgs();
+                _genLaunchArgs();
               },
               child: Text("Authenticate"),
             ),
@@ -95,9 +96,10 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
     final details = await ref.read(
       minecraftVersionDetailsProvider(manifest.versions.first).future,
     );
-    final args = MinecraftRepository.generateLaunchArguments(
-      details.arguments!,
-    );
-    print(args);
+    final args = LauncherService.generateLaunchArguments(details);
+    // final shell = Shell();
+    // await shell.run(java);
+
+    print("/usr/lib/jvm/jre-25-openjdk/bin/java $args");
   }
 }

@@ -11,30 +11,43 @@ class LauncherService {
     final dio = Dio();
 
     final librariesDirectory = "${Directory.current.path}/game/libraries";
-    print("creating at: $librariesDirectory");
-    await Directory(librariesDirectory).create(recursive: true);
 
-    // await dio.download(urlPath, savePath);
     final List<Future> futures = [];
     for (final lib in libraries) {
-      futures.add(
-        dio.download(
-          lib.downloads.artifact.url,
-          "$librariesDirectory/${lib.name}",
-        ),
-      );
-      // print("downloading ${lib.name}");
-      // await dio.download(
-      //   lib.downloads.artifact.url,
-      //   "$librariesDirectory/${lib.name}",
-      // );
+      Future<void> download() async {
+        final artifact = lib.downloads.artifact;
+        dio.download(artifact.url, "$librariesDirectory/${artifact.path}");
+      }
+
+      futures.add(download());
     }
-    // await Future.wait(futures);
+    await Future.wait(futures);
   }
 
-  // Future<void> start() async {
-  //   print("Launching instance");
-  //   print("Downloading libraries");
-  //   await downloadLibraries()
-  // }
+  static String _getClassPathStrings(List<Library> libraries) {
+    final basePath = "${Directory.current.path}/game/libraries";
+    String paths = libraries
+        .map((e) => "$basePath/${e.downloads.artifact.path}")
+        .join(":");
+
+    paths += ":$basePath/client.jar";
+    return paths;
+  }
+
+  static String generateLaunchArguments(VersionDetails details) {
+    String args = "";
+
+    // set the class paths
+    args +=
+        '-cp "${_getClassPathStrings(details.libraries)}" net.minecraft.client.main.Main ';
+
+    // extract game args and set
+
+    for (final arg in details.arguments!.game) {
+      args += arg.values.join(" ");
+      args += " ";
+    }
+
+    return args;
+  }
 }
