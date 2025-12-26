@@ -20,7 +20,7 @@ class MinecraftRepository {
   }) async {
     final dio = Dio();
     final response = await dio.get(entry.url);
-    final data = response.data as Map<String, dynamic>;
+    final data = VersionDetailsMapper.fromMap(response.data);
 
     final gameDir = "${Directory.current.path}/game";
     await Directory(gameDir).create(recursive: true);
@@ -28,25 +28,21 @@ class MinecraftRepository {
     final assetsDir = "$gameDir/assets";
     final nativesDir = "$gameDir/versions/${entry.id}/natives";
 
-    final libraries = data['libraries'] as List<dynamic>;
+    final libraries = data.libraries;
     final classpathList = <String>[];
 
     for (final lib in libraries) {
       if (_isLibraryAllowed(lib)) {
-        if (lib['downloads'] != null && lib['downloads']['artifact'] != null) {
-          final path = lib['downloads']['artifact']['path'];
-          classpathList.add("$gameDir/libraries/$path");
-        }
+        final path = lib.downloads.artifact.path;
+        classpathList.add("$gameDir/libraries/$path");
       }
     }
     classpathList.add("$gameDir/versions/${entry.id}/${entry.id}.jar");
     final classpath = classpathList.join(Platform.pathSeparator);
 
     String logConfigPath = "";
-    if (data['logging'] != null &&
-        data['logging']['client'] != null &&
-        data['logging']['client']['file'] != null) {
-      final fileId = data['logging']['client']['file']['id'];
+    if (data.logging != null) {
+      final fileId = data.logging!.client.file;
       logConfigPath = "$assetsDir/log_configs/$fileId";
     }
 
@@ -58,7 +54,7 @@ class MinecraftRepository {
         .replaceAll(r"${version_name}", entry.id)
         .replaceAll(r"${game_directory}", gameDir)
         .replaceAll(r"${assets_root}", assetsDir)
-        .replaceAll(r"${assets_index_name}", data['assets'] as String? ?? "")
+        .replaceAll(r"${assets_index_name}", data.assets)
         .replaceAll(r"${auth_uuid}", client.profile.id)
         .replaceAll(
           r"${auth_access_token}",
@@ -82,25 +78,24 @@ class MinecraftRepository {
     return VersionDetailsMapper.fromJson(parsedData);
   }
 
-  static bool _isLibraryAllowed(Map<String, dynamic> lib) {
-    if (lib['rules'] == null) return true;
-    final rules = lib['rules'] as List<dynamic>;
+  static bool _isLibraryAllowed(Library lib) {
+    if (lib.rules == null) return true;
+    final rules = lib.rules!;
     return _checkRules(rules);
   }
 
-  static bool _checkRules(List<dynamic> rules) {
+  static bool _checkRules(List<Rule> rules) {
     for (final rule in rules) {
       if (_ruleMatches(rule)) {
-        return rule['action'] == 'allow';
+        return rule.action == 'allow';
       }
     }
     return false;
   }
 
-  static bool _ruleMatches(Map<String, dynamic> rule) {
-    if (rule['os'] == null) return true;
-    final os = rule['os'] as Map<String, dynamic>;
-    final name = os['name'];
+  static bool _ruleMatches(Rule rule) {
+    if (rule.os == null) return true;
+    final name = rule.os!.name;
 
     if (name != null) {
       if (name == 'osx' && !Platform.isMacOS) return false;

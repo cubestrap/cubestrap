@@ -7,7 +7,7 @@ class XboxClient {
   static Future<oauth2.Client> authenticate() async {
     // only for testing, will remove as soon as
     // microsoft approves mine
-    final clientId = dotenv.env['XBOX_CLIENT_ID'] ?? "";
+    final clientId = dotenv.env['XBOX_CLIENT_ID']!;
     final authorizationEndpoint = Uri.parse(
       'https://login.microsoftonline.com/consumers/oauth2/v2.0/authorize',
     );
