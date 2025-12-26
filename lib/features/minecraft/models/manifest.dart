@@ -19,10 +19,13 @@ class LatestMinecraftRelease with LatestMinecraftReleaseMappable {
   const LatestMinecraftRelease({required this.release, required this.snapshot});
 }
 
+@MappableEnum(caseStyle: CaseStyle.snakeCase)
+enum VersionType { snapshot, release, oldBeta, oldAlpha }
+
 @MappableClass()
 class VersionManfiestEntry with VersionManfiestEntryMappable {
   final String id;
-  final String type;
+  final VersionType type;
   final String url;
   final DateTime time;
   final DateTime releaseTime;

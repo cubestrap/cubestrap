@@ -28,7 +28,7 @@ final class MinecraftManifestProvider
         argument: null,
         retry: null,
         name: r'minecraftManifestProvider',
-        isAutoDispose: true,
+        isAutoDispose: false,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
@@ -48,7 +48,7 @@ final class MinecraftManifestProvider
   }
 }
 
-String _$minecraftManifestHash() => r'f9c277579ce5d96a46b95ad829dbfdeeaf546834';
+String _$minecraftManifestHash() => r'cc284720a15ec0430d6e3c49a183101fdbb799a6';
 
 @ProviderFor(minecraftVersionDetails)
 const minecraftVersionDetailsProvider = MinecraftVersionDetailsFamily._();
@@ -67,7 +67,7 @@ final class MinecraftVersionDetailsProvider
   }) : super(
          retry: null,
          name: r'minecraftVersionDetailsProvider',
-         isAutoDispose: true,
+         isAutoDispose: false,
          dependencies: null,
          $allTransitiveDependencies: null,
        );
@@ -107,7 +107,7 @@ final class MinecraftVersionDetailsProvider
 }
 
 String _$minecraftVersionDetailsHash() =>
-    r'c2108d05388c4f0c5a5bac0d98a8275427d6d2b3';
+    r'c2265c049c468301273d821fb640099b567242bb';
 
 final class MinecraftVersionDetailsFamily extends $Family
     with
@@ -121,7 +121,7 @@ final class MinecraftVersionDetailsFamily extends $Family
         name: r'minecraftVersionDetailsProvider',
         dependencies: null,
         $allTransitiveDependencies: null,
-        isAutoDispose: true,
+        isAutoDispose: false,
       );
 
   MinecraftVersionDetailsProvider call(VersionManfiestEntry entry) =>

@@ -20,6 +20,7 @@ class MinecraftRepository {
   }) async {
     final dio = Dio();
     final response = await dio.get(entry.url);
+
     final data = VersionDetailsMapper.fromMap(response.data);
 
     final gameDir = "${Directory.current.path}/game";
@@ -38,7 +39,8 @@ class MinecraftRepository {
       }
     }
     classpathList.add("$gameDir/versions/${entry.id}/${entry.id}.jar");
-    final classpath = classpathList.join(Platform.pathSeparator);
+    final classpath = classpathList.join(";");
+    // print("classpath = $classpath");
 
     String logConfigPath = "";
     if (data.logging != null) {
@@ -46,7 +48,7 @@ class MinecraftRepository {
       logConfigPath = "$assetsDir/log_configs/$fileId";
     }
 
-    final stringData = jsonEncode(data);
+    final stringData = jsonEncode(response.data);
 
     // todo: this is gonna be cringe
     final parsedData = stringData
@@ -62,7 +64,7 @@ class MinecraftRepository {
         )
         .replaceAll(r"${clientid}", client.profile.id)
         .replaceAll(r"${auth_xuid}", client.authenticationData.username)
-        .replaceAll(r"${version_type}", entry.type)
+        .replaceAll(r"${version_type}", entry.type.toValue())
         .replaceAll(r"${resolution_width}", "854")
         .replaceAll(r"${resolution_height}", "480")
         .replaceAll(r"${quickPlayPath}", "")

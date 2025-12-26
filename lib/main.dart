@@ -1,13 +1,29 @@
+import 'dart:io';
+
 import 'package:cubestrap/features/minecraft/providers/version_manifest.dart';
-import 'package:cubestrap/features/minecraft/repositories/authentication.dart';
 import 'package:cubestrap/features/minecraft/repositories/minecraft.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_ce/hive.dart';
+import 'package:path_provider/path_provider.dart';
 
 void main() async {
   await dotenv.load(fileName: ".env");
+  await _initHive();
+
   runApp(const Cubestrap());
+}
+
+Future<void> _initHive() async {
+  final appDocumentDir = await getApplicationDocumentsDirectory();
+  // will find a better way to do this but it's good for now
+  final dataDir = Directory('${appDocumentDir.path}/cubestrap/data');
+  if (!dataDir.existsSync()) {
+    dataDir.createSync(recursive: true);
+  }
+  Hive.init(dataDir.path);
+  await Hive.openBox("auth");
 }
 
 class Cubestrap extends StatelessWidget {
@@ -45,21 +61,14 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
           children: [
             FilledButton(
               onPressed: () async {
-                _genLaunchArgs();
-                // final accessToken = dotenv.env['MINECRAFT_ACCESS_TOKEN']!;
-                // final minecraftClient =
-                //     await MinecraftAuthentication.authenticate(
-                //       accessToken: accessToken,
-                //     );
-
                 // final xboxClient = await XboxClient.authenticate();
-                // print("client = ${xboxClient.credentials.accessToken}");
-
-                // print("got client = $minecraftClient");
-                // final client = ModrinthDartApi();
-                // final projects = await client.getProjectsApi().searchProjects(
-                //   query: "automation",
+                // final auth = Hive.box('auth');
+                // await auth.put(
+                //   "minecraft-token",
+                //   xboxClient.credentials.accessToken,
                 // );
+
+                _genLaunchArgs();
               },
               child: Text("Authenticate"),
             ),

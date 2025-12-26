@@ -7,6 +7,60 @@
 
 part of 'manifest.dart';
 
+class VersionTypeMapper extends EnumMapper<VersionType> {
+  VersionTypeMapper._();
+
+  static VersionTypeMapper? _instance;
+  static VersionTypeMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = VersionTypeMapper._());
+    }
+    return _instance!;
+  }
+
+  static VersionType fromValue(dynamic value) {
+    ensureInitialized();
+    return MapperContainer.globals.fromValue(value);
+  }
+
+  @override
+  VersionType decode(dynamic value) {
+    switch (value) {
+      case r'snapshot':
+        return VersionType.snapshot;
+      case r'release':
+        return VersionType.release;
+      case r'old_beta':
+        return VersionType.oldBeta;
+      case r'old_alpha':
+        return VersionType.oldAlpha;
+      default:
+        throw MapperException.unknownEnumValue(value);
+    }
+  }
+
+  @override
+  dynamic encode(VersionType self) {
+    switch (self) {
+      case VersionType.snapshot:
+        return r'snapshot';
+      case VersionType.release:
+        return r'release';
+      case VersionType.oldBeta:
+        return r'old_beta';
+      case VersionType.oldAlpha:
+        return r'old_alpha';
+    }
+  }
+}
+
+extension VersionTypeMapperExtension on VersionType {
+  String toValue() {
+    VersionTypeMapper.ensureInitialized();
+    return MapperContainer.globals.toValue<VersionType>(this) as String;
+  }
+}
+
 class MinecraftVersionManifestMapper
     extends ClassMapperBase<MinecraftVersionManifest> {
   MinecraftVersionManifestMapper._();
@@ -338,6 +392,7 @@ class VersionManfiestEntryMapper extends ClassMapperBase<VersionManfiestEntry> {
   static VersionManfiestEntryMapper ensureInitialized() {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = VersionManfiestEntryMapper._());
+      VersionTypeMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -347,8 +402,8 @@ class VersionManfiestEntryMapper extends ClassMapperBase<VersionManfiestEntry> {
 
   static String _$id(VersionManfiestEntry v) => v.id;
   static const Field<VersionManfiestEntry, String> _f$id = Field('id', _$id);
-  static String _$type(VersionManfiestEntry v) => v.type;
-  static const Field<VersionManfiestEntry, String> _f$type = Field(
+  static VersionType _$type(VersionManfiestEntry v) => v.type;
+  static const Field<VersionManfiestEntry, VersionType> _f$type = Field(
     'type',
     _$type,
   );
@@ -470,7 +525,7 @@ abstract class VersionManfiestEntryCopyWith<
     implements ClassCopyWith<$R, $In, $Out> {
   $R call({
     String? id,
-    String? type,
+    VersionType? type,
     String? url,
     DateTime? time,
     DateTime? releaseTime,
@@ -493,7 +548,7 @@ class _VersionManfiestEntryCopyWithImpl<$R, $Out>
   @override
   $R call({
     String? id,
-    String? type,
+    VersionType? type,
     String? url,
     DateTime? time,
     DateTime? releaseTime,
