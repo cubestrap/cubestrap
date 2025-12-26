@@ -55,7 +55,7 @@ abstract class InstallerManager {
   ///
   /// [project] - Project.
   @GET('/v3/installer/latest/{feature_version}/{release_type}/{os}/{arch}/{image_type}/{jvm_impl}/{heap_size}/{vendor}')
-  Future<void> getInstaller({
+  Future<HttpResponse<void>> getInstaller({
     @Path('arch') required Architecture arch,
     @Path('feature_version') required int featureVersion,
     @Path('heap_size') required HeapSize heapSize,
@@ -66,6 +66,7 @@ abstract class InstallerManager {
     @Path('vendor') required Vendor vendor,
     @Query('c_lib') CLib? cLib,
     @Query('project') Project? project,
+    @Extras() Map<String, dynamic>? extras,
   });
 
   /// Redirects to the installer that matches your current query.
@@ -99,7 +100,7 @@ abstract class InstallerManager {
   ///
   /// [project] - Project.
   @GET('/v3/installer/version/{release_name}/{os}/{arch}/{image_type}/{jvm_impl}/{heap_size}/{vendor}')
-  Future<void> getInstallerByVersion({
+  Future<HttpResponse<void>> getInstallerByVersion({
     @Path('arch') required Architecture arch,
     @Path('heap_size') required HeapSize heapSize,
     @Path('image_type') required ImageType imageType,
@@ -109,5 +110,6 @@ abstract class InstallerManager {
     @Path('vendor') required Vendor vendor,
     @Query('c_lib') CLib? cLib,
     @Query('project') Project? project,
+    @Extras() Map<String, dynamic>? extras,
   });
 }

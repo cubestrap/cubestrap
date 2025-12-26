@@ -51,7 +51,7 @@ abstract class SignatureManager {
   ///
   /// [project] - Project.
   @GET('/v3/signature/version/{release_name}/{os}/{arch}/{image_type}/{jvm_impl}/{heap_size}/{vendor}')
-  Future<void> getSignatureByVersion({
+  Future<HttpResponse<void>> getSignatureByVersion({
     @Path('arch') required Architecture arch,
     @Path('heap_size') required HeapSize heapSize,
     @Path('image_type') required ImageType imageType,
@@ -61,5 +61,6 @@ abstract class SignatureManager {
     @Path('vendor') required Vendor vendor,
     @Query('c_lib') CLib? cLib,
     @Query('project') Project? project,
+    @Extras() Map<String, dynamic>? extras,
   });
 }

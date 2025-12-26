@@ -20,7 +20,7 @@ class _ChecksumManager implements ChecksumManager {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<void> getChecksumByVersion({
+  Future<HttpResponse<void>> getChecksumByVersion({
     required Architecture arch,
     required HeapSize heapSize,
     required ImageType imageType,
@@ -30,8 +30,10 @@ class _ChecksumManager implements ChecksumManager {
     required AdoptiumVendor vendor,
     CLib? cLib,
     Project? project,
+    Map<String, dynamic>? extras,
   }) async {
     final _extra = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
     final queryParameters = <String, dynamic>{
       r'c_lib': cLib,
       r'project': project,
@@ -39,7 +41,7 @@ class _ChecksumManager implements ChecksumManager {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<void>(
+    final _options = _setStreamType<HttpResponse<void>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -49,7 +51,9 @@ class _ChecksumManager implements ChecksumManager {
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
-    await _dio.fetch<void>(_options);
+    final _result = await _dio.fetch<void>(_options);
+    final httpResponse = HttpResponse(null, _result);
+    return httpResponse;
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

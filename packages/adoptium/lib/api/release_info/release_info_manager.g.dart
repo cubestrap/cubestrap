@@ -20,21 +20,27 @@ class _ReleaseInfoManager implements ReleaseInfoManager {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<GetV3InfoAvailableReleasesResponse> getAvailableReleases() async {
+  Future<HttpResponse<GetV3InfoAvailableReleasesResponse>>
+  getAvailableReleases({Map<String, dynamic>? extras}) async {
     final _extra = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<GetV3InfoAvailableReleasesResponse>(
-      Options(method: 'GET', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/v3/info/available_releases',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
+    final _options =
+        _setStreamType<HttpResponse<GetV3InfoAvailableReleasesResponse>>(
+          Options(method: 'GET', headers: _headers, extra: _extra)
+              .compose(
+                _dio.options,
+                '/v3/info/available_releases',
+                queryParameters: queryParameters,
+                data: _data,
+              )
+              .copyWith(
+                baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl),
+              ),
+        );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late GetV3InfoAvailableReleasesResponse _value;
     try {
@@ -43,11 +49,12 @@ class _ReleaseInfoManager implements ReleaseInfoManager {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
     }
-    return _value;
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
   }
 
   @override
-  Future<GetV3InfoReleaseNamesResponse> getReleaseNames({
+  Future<HttpResponse<GetV3InfoReleaseNamesResponse>> getReleaseNames({
     int? page = 0,
     int? pageSize = 10,
     bool? semver = false,
@@ -64,8 +71,10 @@ class _ReleaseInfoManager implements ReleaseInfoManager {
     SortOrder? sortOrder,
     AdoptiumVendor? vendor,
     String? version,
+    Map<String, dynamic>? extras,
   }) async {
     final _extra = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
     final queryParameters = <String, dynamic>{
       r'page': page,
       r'page_size': pageSize,
@@ -87,16 +96,19 @@ class _ReleaseInfoManager implements ReleaseInfoManager {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<GetV3InfoReleaseNamesResponse>(
-      Options(method: 'GET', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/v3/info/release_names',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
+    final _options =
+        _setStreamType<HttpResponse<GetV3InfoReleaseNamesResponse>>(
+          Options(method: 'GET', headers: _headers, extra: _extra)
+              .compose(
+                _dio.options,
+                '/v3/info/release_names',
+                queryParameters: queryParameters,
+                data: _data,
+              )
+              .copyWith(
+                baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl),
+              ),
+        );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late GetV3InfoReleaseNamesResponse _value;
     try {
@@ -105,29 +117,36 @@ class _ReleaseInfoManager implements ReleaseInfoManager {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
     }
-    return _value;
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
   }
 
   @override
-  Future<GetV3InfoReleaseNotesReleaseNameResponse> getReleaseNotes({
+  Future<HttpResponse<GetV3InfoReleaseNotesReleaseNameResponse>>
+  getReleaseNotes({
     required String releaseName,
     AdoptiumVendor? vendor,
+    Map<String, dynamic>? extras,
   }) async {
     final _extra = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
     final queryParameters = <String, dynamic>{r'vendor': vendor};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<GetV3InfoReleaseNotesReleaseNameResponse>(
-      Options(method: 'GET', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/v3/info/release_notes/${releaseName}',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
+    final _options =
+        _setStreamType<HttpResponse<GetV3InfoReleaseNotesReleaseNameResponse>>(
+          Options(method: 'GET', headers: _headers, extra: _extra)
+              .compose(
+                _dio.options,
+                '/v3/info/release_notes/${releaseName}',
+                queryParameters: queryParameters,
+                data: _data,
+              )
+              .copyWith(
+                baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl),
+              ),
+        );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late GetV3InfoReleaseNotesReleaseNameResponse _value;
     try {
@@ -136,11 +155,12 @@ class _ReleaseInfoManager implements ReleaseInfoManager {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
     }
-    return _value;
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
   }
 
   @override
-  Future<GetV3InfoReleaseVersionsResponse> getReleaseVersions({
+  Future<HttpResponse<GetV3InfoReleaseVersionsResponse>> getReleaseVersions({
     int? page = 0,
     int? pageSize = 10,
     bool? semver = false,
@@ -157,8 +177,10 @@ class _ReleaseInfoManager implements ReleaseInfoManager {
     SortOrder? sortOrder,
     AdoptiumVendor? vendor,
     String? version,
+    Map<String, dynamic>? extras,
   }) async {
     final _extra = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
     final queryParameters = <String, dynamic>{
       r'page': page,
       r'page_size': pageSize,
@@ -180,16 +202,19 @@ class _ReleaseInfoManager implements ReleaseInfoManager {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<GetV3InfoReleaseVersionsResponse>(
-      Options(method: 'GET', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/v3/info/release_versions',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
+    final _options =
+        _setStreamType<HttpResponse<GetV3InfoReleaseVersionsResponse>>(
+          Options(method: 'GET', headers: _headers, extra: _extra)
+              .compose(
+                _dio.options,
+                '/v3/info/release_versions',
+                queryParameters: queryParameters,
+                data: _data,
+              )
+              .copyWith(
+                baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl),
+              ),
+        );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late GetV3InfoReleaseVersionsResponse _value;
     try {
@@ -198,7 +223,8 @@ class _ReleaseInfoManager implements ReleaseInfoManager {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
     }
-    return _value;
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

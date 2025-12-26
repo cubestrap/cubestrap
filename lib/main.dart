@@ -1,8 +1,10 @@
 import 'dart:io';
 
+import 'package:adoptium/adoptium.dart';
 import 'package:cubestrap/features/launcher/services/launcher.dart';
 import 'package:cubestrap/features/minecraft/providers/version_manifest.dart';
 import 'package:cubestrap/features/minecraft/repositories/minecraft.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
@@ -63,6 +65,19 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
           children: [
             FilledButton(
               onPressed: () async {
+                final adoptium = AdoptiumClient(Dio());
+                final response = await adoptium.binary.getBinary(
+                  arch: Architecture.x64,
+                  featureVersion: 25,
+                  heapSize: HeapSize.normal,
+                  imageType: .jdk,
+                  jvmImpl: .hotspot,
+                  os: .linux,
+                  releaseType: .ea,
+                  vendor: .eclipse,
+                );
+                print(response.response.statusCode);
+
                 // final xboxClient = await XboxClient.authenticate();
                 // final auth = Hive.box('auth');
                 // await auth.put(

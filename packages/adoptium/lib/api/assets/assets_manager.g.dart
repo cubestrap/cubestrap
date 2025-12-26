@@ -20,7 +20,7 @@ class _AssetsManager implements AssetsManager {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<List<Release>> searchReleases({
+  Future<HttpResponse<List<Release>>> searchReleases({
     required int featureVersion,
     required ReleaseType releaseType,
     int? page = 0,
@@ -36,8 +36,10 @@ class _AssetsManager implements AssetsManager {
     SortMethod? sortMethod,
     SortOrder? sortOrder,
     AdoptiumVendor? vendor,
+    Map<String, dynamic>? extras,
   }) async {
     final _extra = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
     final queryParameters = <String, dynamic>{
       r'page': page,
       r'page_size': pageSize,
@@ -56,7 +58,7 @@ class _AssetsManager implements AssetsManager {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<Release>>(
+    final _options = _setStreamType<HttpResponse<List<Release>>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -76,19 +78,22 @@ class _AssetsManager implements AssetsManager {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
     }
-    return _value;
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
   }
 
   @override
-  Future<List<BinaryAssetView>> getLatestAssets({
+  Future<HttpResponse<List<BinaryAssetView>>> getLatestAssets({
     required int featureVersion,
     required AdoptiumJvmImpl jvmImpl,
     Architecture? architecture,
     ImageType? imageType,
     OperatingSystem? os,
     AdoptiumVendor? vendor,
+    Map<String, dynamic>? extras,
   }) async {
     final _extra = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
     final queryParameters = <String, dynamic>{
       r'architecture': architecture,
       r'image_type': imageType,
@@ -98,7 +103,7 @@ class _AssetsManager implements AssetsManager {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<BinaryAssetView>>(
+    final _options = _setStreamType<HttpResponse<List<BinaryAssetView>>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -120,11 +125,12 @@ class _AssetsManager implements AssetsManager {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
     }
-    return _value;
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
   }
 
   @override
-  Future<Release> getReleaseInfo({
+  Future<HttpResponse<Release>> getReleaseInfo({
     required String releaseName,
     required AdoptiumVendor vendor,
     Architecture? architecture,
@@ -134,8 +140,10 @@ class _AssetsManager implements AssetsManager {
     AdoptiumJvmImpl? jvmImpl,
     OperatingSystem? os,
     Project? project,
+    Map<String, dynamic>? extras,
   }) async {
     final _extra = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
     final queryParameters = <String, dynamic>{
       r'architecture': architecture,
       r'c_lib': cLib,
@@ -148,7 +156,7 @@ class _AssetsManager implements AssetsManager {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<Release>(
+    final _options = _setStreamType<HttpResponse<Release>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -166,11 +174,12 @@ class _AssetsManager implements AssetsManager {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
     }
-    return _value;
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
   }
 
   @override
-  Future<List<Release>> searchReleasesByVersion({
+  Future<HttpResponse<List<Release>>> searchReleasesByVersion({
     required String version,
     int? page = 0,
     int? pageSize = 10,
@@ -187,8 +196,10 @@ class _AssetsManager implements AssetsManager {
     SortMethod? sortMethod,
     SortOrder? sortOrder,
     AdoptiumVendor? vendor,
+    Map<String, dynamic>? extras,
   }) async {
     final _extra = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
     final queryParameters = <String, dynamic>{
       r'page': page,
       r'page_size': pageSize,
@@ -209,7 +220,7 @@ class _AssetsManager implements AssetsManager {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<Release>>(
+    final _options = _setStreamType<HttpResponse<List<Release>>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -229,7 +240,8 @@ class _AssetsManager implements AssetsManager {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
     }
-    return _value;
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

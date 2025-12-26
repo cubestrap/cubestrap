@@ -36,9 +36,10 @@ abstract class AttestationsManager {
   ///
   /// [project] - Project.
   @GET('/v3/attestations/release_name/{release_name}')
-  Future<List<Attestation>> listAttestationsForRelease({
+  Future<HttpResponse<List<Attestation>>> listAttestationsForRelease({
     @Path('release_name') required String releaseName,
     @Query('project') Project? project,
+    @Extras() Map<String, dynamic>? extras,
   });
 
   /// Returns matching attestations.
@@ -68,7 +69,7 @@ abstract class AttestationsManager {
   ///
   /// [project] - Project.
   @GET('/v3/attestations/release_name/{release_name}/{os}/{arch}/{image_type}/{jvm_impl}/{vendor}')
-  Future<List<Attestation>> listAttestationsForAssetBinary({
+  Future<HttpResponse<List<Attestation>>> listAttestationsForAssetBinary({
     @Path('arch') required Architecture arch,
     @Path('image_type') required ImageType imageType,
     @Path('jvm_impl') required JvmImpl jvmImpl,
@@ -76,6 +77,7 @@ abstract class AttestationsManager {
     @Path('release_name') required String releaseName,
     @Path('vendor') required Vendor vendor,
     @Query('project') Project? project,
+    @Extras() Map<String, dynamic>? extras,
   });
 
   /// Returns attestations that target the given SHA256 checksum.
@@ -86,8 +88,9 @@ abstract class AttestationsManager {
   ///
   /// [project] - Project.
   @GET('/v3/attestations/target_checksum/{target_checksum}')
-  Future<List<Attestation>> listAttestationsForTargetChecksum({
+  Future<HttpResponse<List<Attestation>>> listAttestationsForTargetChecksum({
     @Path('target_checksum') required String targetChecksum,
     @Query('project') Project? project,
+    @Extras() Map<String, dynamic>? extras,
   });
 }

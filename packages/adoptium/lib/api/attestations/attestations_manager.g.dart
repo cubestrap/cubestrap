@@ -20,16 +20,18 @@ class _AttestationsManager implements AttestationsManager {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<List<Attestation>> listAttestationsForRelease({
+  Future<HttpResponse<List<Attestation>>> listAttestationsForRelease({
     required String releaseName,
     Project? project,
+    Map<String, dynamic>? extras,
   }) async {
     final _extra = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
     final queryParameters = <String, dynamic>{r'project': project};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<Attestation>>(
+    final _options = _setStreamType<HttpResponse<List<Attestation>>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -49,11 +51,12 @@ class _AttestationsManager implements AttestationsManager {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
     }
-    return _value;
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
   }
 
   @override
-  Future<List<Attestation>> listAttestationsForAssetBinary({
+  Future<HttpResponse<List<Attestation>>> listAttestationsForAssetBinary({
     required Architecture arch,
     required ImageType imageType,
     required AdoptiumJvmImpl jvmImpl,
@@ -61,13 +64,15 @@ class _AttestationsManager implements AttestationsManager {
     required String releaseName,
     required AdoptiumVendor vendor,
     Project? project,
+    Map<String, dynamic>? extras,
   }) async {
     final _extra = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
     final queryParameters = <String, dynamic>{r'project': project};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<Attestation>>(
+    final _options = _setStreamType<HttpResponse<List<Attestation>>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -87,20 +92,23 @@ class _AttestationsManager implements AttestationsManager {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
     }
-    return _value;
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
   }
 
   @override
-  Future<List<Attestation>> listAttestationsForTargetChecksum({
+  Future<HttpResponse<List<Attestation>>> listAttestationsForTargetChecksum({
     required String targetChecksum,
     Project? project,
+    Map<String, dynamic>? extras,
   }) async {
     final _extra = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
     final queryParameters = <String, dynamic>{r'project': project};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<Attestation>>(
+    final _options = _setStreamType<HttpResponse<List<Attestation>>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -120,7 +128,8 @@ class _AttestationsManager implements AttestationsManager {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
     }
-    return _value;
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

@@ -26,7 +26,7 @@ swagger_parser:
   # Optional (dart only).
   # Support @Extras annotation for interceptors.
   # If the value is 'true', then the annotation will be added to all requests.
-  extras_parameter_by_default: false
+  extras_parameter_by_default: true
 
   # Optional (dart only).
   # Generate static OpenAPI metadata (tags, operationId, externalDocsUrl) for each request.
@@ -80,7 +80,7 @@ swagger_parser:
   mark_files_as_generated: true
 
   # Optional (dart only). Set 'true' to wrap all request return types with HttpResponse.
-  original_http_response: false
+  original_http_response: true
 
   # Optional (dart & freezed/dart_mappable). Set string value to use fallbackUnion parameter.
   # For freezed: adds fallbackUnion: <value> to the @Freezed annotation.

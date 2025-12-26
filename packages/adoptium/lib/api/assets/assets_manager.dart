@@ -70,7 +70,7 @@ abstract class AssetsManager {
   ///
   /// [vendor] - <p>Vendor of the binary. This is the organisation that produced the binary package.</p>.
   @GET('/v3/assets/feature_releases/{feature_version}/{release_type}')
-  Future<List<Release>> searchReleases({
+  Future<HttpResponse<List<Release>>> searchReleases({
     @Path('feature_version') required int featureVersion,
     @Path('release_type') required ReleaseType releaseType,
     @Query('page') int? page = 0,
@@ -86,6 +86,7 @@ abstract class AssetsManager {
     @Query('sort_method') SortMethod? sortMethod,
     @Query('sort_order') SortOrder? sortOrder,
     @Query('vendor') Vendor? vendor,
+    @Extras() Map<String, dynamic>? extras,
   });
 
   /// Returns list of latest assets for the given feature version and jvm impl.
@@ -110,13 +111,14 @@ abstract class AssetsManager {
   ///
   /// [vendor] - <p>Vendor of the binary. This is the organisation that produced the binary package.</p>.
   @GET('/v3/assets/latest/{feature_version}/{jvm_impl}')
-  Future<List<BinaryAssetView>> getLatestAssets({
+  Future<HttpResponse<List<BinaryAssetView>>> getLatestAssets({
     @Path('feature_version') required int featureVersion,
     @Path('jvm_impl') required JvmImpl jvmImpl,
     @Query('architecture') Architecture? architecture,
     @Query('image_type') ImageType? imageType,
     @Query('os') OperatingSystem? os,
     @Query('vendor') Vendor? vendor,
+    @Extras() Map<String, dynamic>? extras,
   });
 
   /// Returns release information.
@@ -141,7 +143,7 @@ abstract class AssetsManager {
   ///
   /// [project] - Project.
   @GET('/v3/assets/release_name/{vendor}/{release_name}')
-  Future<Release> getReleaseInfo({
+  Future<HttpResponse<Release>> getReleaseInfo({
     @Path('release_name') required String releaseName,
     @Path('vendor') required Vendor vendor,
     @Query('architecture') Architecture? architecture,
@@ -151,6 +153,7 @@ abstract class AssetsManager {
     @Query('jvm_impl') JvmImpl? jvmImpl,
     @Query('os') OperatingSystem? os,
     @Query('project') Project? project,
+    @Extras() Map<String, dynamic>? extras,
   });
 
   /// Returns release information about the specified version.
@@ -201,7 +204,7 @@ abstract class AssetsManager {
   ///
   /// [vendor] - <p>Vendor of the binary. This is the organisation that produced the binary package.</p>.
   @GET('/v3/assets/version/{version}')
-  Future<List<Release>> searchReleasesByVersion({
+  Future<HttpResponse<List<Release>>> searchReleasesByVersion({
     @Path('version') required String version,
     @Query('page') int? page = 0,
     @Query('page_size') int? pageSize = 10,
@@ -218,5 +221,6 @@ abstract class AssetsManager {
     @Query('sort_method') SortMethod? sortMethod,
     @Query('sort_order') SortOrder? sortOrder,
     @Query('vendor') Vendor? vendor,
+    @Extras() Map<String, dynamic>? extras,
   });
 }

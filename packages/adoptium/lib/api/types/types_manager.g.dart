@@ -20,12 +20,16 @@ class _TypesManager implements TypesManager {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<List<String>> getArchitectures() async {
+  Future<HttpResponse<List<String>>> getArchitectures({
+    Map<String, dynamic>? extras,
+  }) async {
     final _extra = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<String>>(
+    final _options = _setStreamType<HttpResponse<List<String>>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -43,16 +47,21 @@ class _TypesManager implements TypesManager {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
     }
-    return _value;
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
   }
 
   @override
-  Future<List<String>> getOperatingSystems() async {
+  Future<HttpResponse<List<String>>> getOperatingSystems({
+    Map<String, dynamic>? extras,
+  }) async {
     final _extra = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<String>>(
+    final _options = _setStreamType<HttpResponse<List<String>>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -70,7 +79,8 @@ class _TypesManager implements TypesManager {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
     }
-    return _value;
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
