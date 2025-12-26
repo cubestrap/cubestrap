@@ -4,15 +4,15 @@
 
 import 'package:dio/dio.dart';
 
-import 'assets/assets_client.dart';
-import 'attestations/attestations_client.dart';
-import 'binary/binary_client.dart';
-import 'checksum/checksum_client.dart';
-import 'release_info/release_info_client.dart';
-import 'installer/installer_client.dart';
-import 'signature/signature_client.dart';
-import 'types/types_client.dart';
-import 'version/version_client.dart';
+import 'assets/assets_manager.dart';
+import 'attestations/attestations_manager.dart';
+import 'binary/binary_manager.dart';
+import 'checksum/checksum_manager.dart';
+import 'release_info/release_info_manager.dart';
+import 'installer/installer_manager.dart';
+import 'signature/signature_manager.dart';
+import 'types/types_manager.dart';
+import 'version/version_manager.dart';
 
 /// v3 `v3.0.0`.
 ///
@@ -29,31 +29,31 @@ class AdoptiumClient {
 
   static String get version => '3.0.0';
 
-  AssetsClient? _assets;
-  AttestationsClient? _attestations;
-  BinaryClient? _binary;
-  ChecksumClient? _checksum;
-  ReleaseInfoClient? _releaseInfo;
-  InstallerClient? _installer;
-  SignatureClient? _signature;
-  TypesClient? _types;
-  VersionClient? _version;
+  AssetsManager? _assets;
+  AttestationsManager? _attestations;
+  BinaryManager? _binary;
+  ChecksumManager? _checksum;
+  ReleaseInfoManager? _releaseInfo;
+  InstallerManager? _installer;
+  SignatureManager? _signature;
+  TypesManager? _types;
+  VersionManager? _version;
 
-  AssetsClient get assets => _assets ??= AssetsClient(_dio, baseUrl: _baseUrl);
+  AssetsManager get assets => _assets ??= AssetsManager(_dio, baseUrl: _baseUrl);
 
-  AttestationsClient get attestations => _attestations ??= AttestationsClient(_dio, baseUrl: _baseUrl);
+  AttestationsManager get attestations => _attestations ??= AttestationsManager(_dio, baseUrl: _baseUrl);
 
-  BinaryClient get binary => _binary ??= BinaryClient(_dio, baseUrl: _baseUrl);
+  BinaryManager get binary => _binary ??= BinaryManager(_dio, baseUrl: _baseUrl);
 
-  ChecksumClient get checksum => _checksum ??= ChecksumClient(_dio, baseUrl: _baseUrl);
+  ChecksumManager get checksum => _checksum ??= ChecksumManager(_dio, baseUrl: _baseUrl);
 
-  ReleaseInfoClient get releaseInfo => _releaseInfo ??= ReleaseInfoClient(_dio, baseUrl: _baseUrl);
+  ReleaseInfoManager get releaseInfo => _releaseInfo ??= ReleaseInfoManager(_dio, baseUrl: _baseUrl);
 
-  InstallerClient get installer => _installer ??= InstallerClient(_dio, baseUrl: _baseUrl);
+  InstallerManager get installer => _installer ??= InstallerManager(_dio, baseUrl: _baseUrl);
 
-  SignatureClient get signature => _signature ??= SignatureClient(_dio, baseUrl: _baseUrl);
+  SignatureManager get signature => _signature ??= SignatureManager(_dio, baseUrl: _baseUrl);
 
-  TypesClient get types => _types ??= TypesClient(_dio, baseUrl: _baseUrl);
+  TypesManager get types => _types ??= TypesManager(_dio, baseUrl: _baseUrl);
 
-  VersionClient get version => _version ??= VersionClient(_dio, baseUrl: _baseUrl);
+  VersionManager get version => _version ??= VersionManager(_dio, baseUrl: _baseUrl);
 }

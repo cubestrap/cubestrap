@@ -3,15 +3,15 @@
 // ignore_for_file: type=lint, unused_import, invalid_annotation_target, unnecessary_import
 
 // Clients
-export 'assets/assets_client.dart';
-export 'attestations/attestations_client.dart';
-export 'binary/binary_client.dart';
-export 'checksum/checksum_client.dart';
-export 'release_info/release_info_client.dart';
-export 'installer/installer_client.dart';
-export 'signature/signature_client.dart';
-export 'types/types_client.dart';
-export 'version/version_client.dart';
+export 'assets/assets_manager.dart';
+export 'attestations/attestations_manager.dart';
+export 'binary/binary_manager.dart';
+export 'checksum/checksum_manager.dart';
+export 'release_info/release_info_manager.dart';
+export 'installer/installer_manager.dart';
+export 'signature/signature_manager.dart';
+export 'types/types_manager.dart';
+export 'version/version_manager.dart';
 // Data classes
 export 'models/adoptium_jvm_impl.dart';
 export 'models/adoptium_vendor.dart';

@@ -59,7 +59,7 @@ swagger_parser:
   merge_clients: false
 
   # Optional. Set postfix for Client class and file.
-  client_postfix: Client
+  client_postfix: Manager
 
   # Optional. Set 'true' to use only the endpoint path for the method name.
   # Set 'false' to use operationId
