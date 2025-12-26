@@ -12,7 +12,6 @@ import 'release_info/release_info_manager.dart';
 import 'installer/installer_manager.dart';
 import 'signature/signature_manager.dart';
 import 'types/types_manager.dart';
-import 'version/version_manager.dart';
 
 /// v3 `v3.0.0`.
 ///
@@ -37,7 +36,6 @@ class AdoptiumClient {
   InstallerManager? _installer;
   SignatureManager? _signature;
   TypesManager? _types;
-  VersionManager? _version;
 
   AssetsManager get assets => _assets ??= AssetsManager(_dio, baseUrl: _baseUrl);
 
@@ -54,6 +52,4 @@ class AdoptiumClient {
   SignatureManager get signature => _signature ??= SignatureManager(_dio, baseUrl: _baseUrl);
 
   TypesManager get types => _types ??= TypesManager(_dio, baseUrl: _baseUrl);
-
-  VersionManager get version => _version ??= VersionManager(_dio, baseUrl: _baseUrl);
 }

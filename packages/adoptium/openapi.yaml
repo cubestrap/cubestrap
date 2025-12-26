@@ -2119,21 +2119,23 @@ paths:
                 type: array
                 items:
                   type: string
-  /v3/version/{version}:
-    get:
-      summary: Parses a java version string
-      description: Parses a java version string and returns that data in a structured
-        format
-      operationId: parseVersion
-      tags:
-      - Version
-      parameters:
-      - description: Version
-        name: version
-        required: true
-        in: path
-        schema:
-          type: string
-      responses:
-        "400":
-          description: bad input parameter
+  # disabled because it conflicts with the dart codegen,
+  # and honestly this doesn't seem that useful
+  # /v3/version/{version}:
+  #   get:
+  #     summary: Parses a java version string
+  #     description: Parses a java version string and returns that data in a structured
+  #       format
+  #     operationId: parseVersion
+  #     tags:
+  #     - Version
+  #     parameters:
+  #     - description: Version
+  #       name: version
+  #       required: true
+  #       in: path
+  #       schema:
+  #         type: string
+  #     responses:
+  #       "400":
+  #         description: bad input parameter

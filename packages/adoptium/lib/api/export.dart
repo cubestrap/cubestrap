@@ -11,7 +11,6 @@ export 'release_info/release_info_manager.dart';
 export 'installer/installer_manager.dart';
 export 'signature/signature_manager.dart';
 export 'types/types_manager.dart';
-export 'version/version_manager.dart';
 // Data classes
 export 'models/adoptium_jvm_impl.dart';
 export 'models/adoptium_vendor.dart';
