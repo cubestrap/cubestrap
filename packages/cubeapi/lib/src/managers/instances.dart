@@ -45,13 +45,13 @@ class InstanceManager extends Manager {
   }
 
   // yeah no this should be in the launcher
-  void launch(String id) {
+  Future<void> launch(String id) async {
     final instance = fetch(id);
-    final details = parseVersionDetails(
+    final details = await parseVersionDetails(
       instance.rawVersionDetails,
       client: client,
     );
-    final args = client.launcher.getLaunchArguments(instance.rawVersionDetails);
+    final args = client.launcher.getLaunchArguments(details);
 
     print("got args = $args");
   }

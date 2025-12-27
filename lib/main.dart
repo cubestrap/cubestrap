@@ -80,7 +80,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
                   name: "Anutha Instance",
                   rawVersionDetails: details,
                 );
-                client.instances.launch(instance.id);
+                await client.instances.launch(instance.id);
                 // 43d934f9-68f9-43bf-9d1a-270af5f43baf
 
                 // final dio = Dio(
