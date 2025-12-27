@@ -71,8 +71,11 @@ class AuthenticationManager extends Manager {
     } else {
       if (coldProfile.oauthCredentials.isExpired) {
         print("CREDENTIALS EXPIRED SO REFRESHING!");
+        final clientId = dotenv.env['XBOX_CLIENT_ID']!;
 
-        credentials = await coldProfile.oauthCredentials.refresh();
+        credentials = await coldProfile.oauthCredentials.refresh(
+          identifier: clientId,
+        );
       } else {
         credentials = coldProfile.oauthCredentials;
       }
