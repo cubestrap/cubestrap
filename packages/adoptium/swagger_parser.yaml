@@ -80,7 +80,7 @@ swagger_parser:
   mark_files_as_generated: true
 
   # Optional (dart only). Set 'true' to wrap all request return types with HttpResponse.
-  original_http_response: true
+  original_http_response: false
 
   # Optional (dart & freezed/dart_mappable). Set string value to use fallbackUnion parameter.
   # For freezed: adds fallbackUnion: <value> to the @Freezed annotation.

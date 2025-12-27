@@ -70,7 +70,7 @@ abstract class AssetsManager {
   ///
   /// [vendor] - <p>Vendor of the binary. This is the organisation that produced the binary package.</p>.
   @GET('/v3/assets/feature_releases/{feature_version}/{release_type}')
-  Future<HttpResponse<List<Release>>> searchReleases({
+  Future<List<Release>> searchReleases({
     @Path('feature_version') required int featureVersion,
     @Path('release_type') required ReleaseType releaseType,
     @Query('page') int? page = 0,
@@ -111,7 +111,7 @@ abstract class AssetsManager {
   ///
   /// [vendor] - <p>Vendor of the binary. This is the organisation that produced the binary package.</p>.
   @GET('/v3/assets/latest/{feature_version}/{jvm_impl}')
-  Future<HttpResponse<List<BinaryAssetView>>> getLatestAssets({
+  Future<List<BinaryAssetView>> getLatestAssets({
     @Path('feature_version') required int featureVersion,
     @Path('jvm_impl') required JvmImpl jvmImpl,
     @Query('architecture') Architecture? architecture,
@@ -143,7 +143,7 @@ abstract class AssetsManager {
   ///
   /// [project] - Project.
   @GET('/v3/assets/release_name/{vendor}/{release_name}')
-  Future<HttpResponse<Release>> getReleaseInfo({
+  Future<Release> getReleaseInfo({
     @Path('release_name') required String releaseName,
     @Path('vendor') required Vendor vendor,
     @Query('architecture') Architecture? architecture,
@@ -204,7 +204,7 @@ abstract class AssetsManager {
   ///
   /// [vendor] - <p>Vendor of the binary. This is the organisation that produced the binary package.</p>.
   @GET('/v3/assets/version/{version}')
-  Future<HttpResponse<List<Release>>> searchReleasesByVersion({
+  Future<List<Release>> searchReleasesByVersion({
     @Path('version') required String version,
     @Query('page') int? page = 0,
     @Query('page_size') int? pageSize = 10,

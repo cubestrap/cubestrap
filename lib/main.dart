@@ -77,7 +77,6 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
                   jvmImpl: .hotspot,
                   imageType: .jdk,
                 );
-                print(response.data.first.binary?.package?.link);
 
                 // final xboxClient = await XboxClient.authenticate();
                 // final auth = Hive.box('auth');

@@ -20,7 +20,7 @@ class _InstallerManager implements InstallerManager {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<void>> getInstaller({
+  Future<void> getInstaller({
     required Architecture arch,
     required int featureVersion,
     required HeapSize heapSize,
@@ -42,7 +42,7 @@ class _InstallerManager implements InstallerManager {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<HttpResponse<void>>(
+    final _options = _setStreamType<void>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -52,13 +52,11 @@ class _InstallerManager implements InstallerManager {
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
-    final _result = await _dio.fetch<void>(_options);
-    final httpResponse = HttpResponse(null, _result);
-    return httpResponse;
+    await _dio.fetch<void>(_options);
   }
 
   @override
-  Future<HttpResponse<void>> getInstallerByVersion({
+  Future<void> getInstallerByVersion({
     required Architecture arch,
     required HeapSize heapSize,
     required ImageType imageType,
@@ -79,7 +77,7 @@ class _InstallerManager implements InstallerManager {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<HttpResponse<void>>(
+    final _options = _setStreamType<void>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -89,9 +87,7 @@ class _InstallerManager implements InstallerManager {
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
-    final _result = await _dio.fetch<void>(_options);
-    final httpResponse = HttpResponse(null, _result);
-    return httpResponse;
+    await _dio.fetch<void>(_options);
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

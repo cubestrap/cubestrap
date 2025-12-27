@@ -55,7 +55,7 @@ abstract class BinaryManager {
   ///
   /// [project] - Project.
   @GET('/v3/binary/latest/{feature_version}/{release_type}/{os}/{arch}/{image_type}/{jvm_impl}/{heap_size}/{vendor}')
-  Future<HttpResponse<void>> getBinary({
+  Future<void> getBinary({
     @Path('arch') required Architecture arch,
     @Path('feature_version') required int featureVersion,
     @Path('heap_size') required HeapSize heapSize,
@@ -100,7 +100,7 @@ abstract class BinaryManager {
   ///
   /// [project] - Project.
   @GET('/v3/binary/version/{release_name}/{os}/{arch}/{image_type}/{jvm_impl}/{heap_size}/{vendor}')
-  Future<HttpResponse<void>> getBinaryByVersion({
+  Future<void> getBinaryByVersion({
     @Path('arch') required Architecture arch,
     @Path('heap_size') required HeapSize heapSize,
     @Path('image_type') required ImageType imageType,

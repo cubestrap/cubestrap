@@ -51,7 +51,7 @@ abstract class ChecksumManager {
   ///
   /// [project] - Project.
   @GET('/v3/checksum/version/{release_name}/{os}/{arch}/{image_type}/{jvm_impl}/{heap_size}/{vendor}')
-  Future<HttpResponse<void>> getChecksumByVersion({
+  Future<void> getChecksumByVersion({
     @Path('arch') required Architecture arch,
     @Path('heap_size') required HeapSize heapSize,
     @Path('image_type') required ImageType imageType,

@@ -29,7 +29,7 @@ abstract class ReleaseInfoManager {
 
   /// Returns information about available releases
   @GET('/v3/info/available_releases')
-  Future<HttpResponse<GetV3InfoAvailableReleasesResponse>> getAvailableReleases({
+  Future<GetV3InfoAvailableReleasesResponse> getAvailableReleases({
     @Extras() Map<String, dynamic>? extras,
   });
 
@@ -78,7 +78,7 @@ abstract class ReleaseInfoManager {
   /// Details of maven version ranges can be found at.
   ///     <https://maven.apache.org/enforcer/enforcer-rules/versionRanges.html>.
   @GET('/v3/info/release_names')
-  Future<HttpResponse<GetV3InfoReleaseNamesResponse>> getReleaseNames({
+  Future<GetV3InfoReleaseNamesResponse> getReleaseNames({
     @Query('page') int? page = 0,
     @Query('page_size') int? pageSize = 10,
     @Query('semver') bool? semver = false,
@@ -113,7 +113,7 @@ abstract class ReleaseInfoManager {
   ///
   /// [vendor] - <p>Vendor of the binary. This is the organisation that produced the binary package.</p>.
   @GET('/v3/info/release_notes/{release_name}')
-  Future<HttpResponse<GetV3InfoReleaseNotesReleaseNameResponse>> getReleaseNotes({
+  Future<GetV3InfoReleaseNotesReleaseNameResponse> getReleaseNotes({
     @Path('release_name') required String releaseName,
     @Query('vendor') Vendor? vendor,
     @Extras() Map<String, dynamic>? extras,
@@ -164,7 +164,7 @@ abstract class ReleaseInfoManager {
   /// Details of maven version ranges can be found at.
   ///     <https://maven.apache.org/enforcer/enforcer-rules/versionRanges.html>.
   @GET('/v3/info/release_versions')
-  Future<HttpResponse<GetV3InfoReleaseVersionsResponse>> getReleaseVersions({
+  Future<GetV3InfoReleaseVersionsResponse> getReleaseVersions({
     @Query('page') int? page = 0,
     @Query('page_size') int? pageSize = 10,
     @Query('semver') bool? semver = false,

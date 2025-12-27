@@ -36,7 +36,7 @@ abstract class AttestationsManager {
   ///
   /// [project] - Project.
   @GET('/v3/attestations/release_name/{release_name}')
-  Future<HttpResponse<List<Attestation>>> listAttestationsForRelease({
+  Future<List<Attestation>> listAttestationsForRelease({
     @Path('release_name') required String releaseName,
     @Query('project') Project? project,
     @Extras() Map<String, dynamic>? extras,
@@ -69,7 +69,7 @@ abstract class AttestationsManager {
   ///
   /// [project] - Project.
   @GET('/v3/attestations/release_name/{release_name}/{os}/{arch}/{image_type}/{jvm_impl}/{vendor}')
-  Future<HttpResponse<List<Attestation>>> listAttestationsForAssetBinary({
+  Future<List<Attestation>> listAttestationsForAssetBinary({
     @Path('arch') required Architecture arch,
     @Path('image_type') required ImageType imageType,
     @Path('jvm_impl') required JvmImpl jvmImpl,
@@ -88,7 +88,7 @@ abstract class AttestationsManager {
   ///
   /// [project] - Project.
   @GET('/v3/attestations/target_checksum/{target_checksum}')
-  Future<HttpResponse<List<Attestation>>> listAttestationsForTargetChecksum({
+  Future<List<Attestation>> listAttestationsForTargetChecksum({
     @Path('target_checksum') required String targetChecksum,
     @Query('project') Project? project,
     @Extras() Map<String, dynamic>? extras,

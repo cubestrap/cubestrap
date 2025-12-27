@@ -20,16 +20,14 @@ class _TypesManager implements TypesManager {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<List<String>>> getArchitectures({
-    Map<String, dynamic>? extras,
-  }) async {
+  Future<List<String>> getArchitectures({Map<String, dynamic>? extras}) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<HttpResponse<List<String>>>(
+    final _options = _setStreamType<List<String>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -47,12 +45,11 @@ class _TypesManager implements TypesManager {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
     }
-    final httpResponse = HttpResponse(_value, _result);
-    return httpResponse;
+    return _value;
   }
 
   @override
-  Future<HttpResponse<List<String>>> getOperatingSystems({
+  Future<List<String>> getOperatingSystems({
     Map<String, dynamic>? extras,
   }) async {
     final _extra = <String, dynamic>{};
@@ -61,7 +58,7 @@ class _TypesManager implements TypesManager {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<HttpResponse<List<String>>>(
+    final _options = _setStreamType<List<String>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -79,8 +76,7 @@ class _TypesManager implements TypesManager {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
     }
-    final httpResponse = HttpResponse(_value, _result);
-    return httpResponse;
+    return _value;
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

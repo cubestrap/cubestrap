@@ -13,13 +13,13 @@ abstract class TypesManager {
 
   /// Returns names of architectures
   @GET('/v3/types/architectures')
-  Future<HttpResponse<List<String>>> getArchitectures({
+  Future<List<String>> getArchitectures({
     @Extras() Map<String, dynamic>? extras,
   });
 
   /// Returns names of operating systems
   @GET('/v3/types/operating_systems')
-  Future<HttpResponse<List<String>>> getOperatingSystems({
+  Future<List<String>> getOperatingSystems({
     @Extras() Map<String, dynamic>? extras,
   });
 }
