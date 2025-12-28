@@ -18,6 +18,14 @@ class _InstanceCardState extends ConsumerState<InstanceCard> {
     return Focus(
       autofocus: true,
       onFocusChange: (value) {
+        if (value) {
+          Scrollable.ensureVisible(
+            context,
+            duration: const Duration(milliseconds: 400),
+            curve: Curves.easeInOutCubic,
+            alignment: 0.5,
+          );
+        }
         setState(() {
           _focused = value;
         });

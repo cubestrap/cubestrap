@@ -13,6 +13,7 @@ class RecentInstances extends ConsumerWidget {
       scrollDirection: .horizontal,
       itemCount: instances.length,
       padding: .only(top: 12, left: 12),
+      physics: BouncingScrollPhysics(),
       separatorBuilder: (context, index) => SizedBox(width: 8),
       itemBuilder: (context, index) {
         return SizedBox(
