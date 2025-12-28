@@ -2,22 +2,39 @@ import 'package:cubeapi/cubeapi.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class InstanceCard extends ConsumerStatefulWidget {
+class InstanceCard extends ConsumerWidget {
   final MinecraftInstance instance;
-  const InstanceCard({super.key, required this.instance});
+  final bool selected;
+  const InstanceCard({
+    super.key,
+    required this.instance,
+    this.selected = false,
+  });
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _InstanceCardState();
-}
-
-class _InstanceCardState extends ConsumerState<InstanceCard> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     return Container(
-      width: 250,
-      decoration: BoxDecoration(color: theme.colorScheme.surfaceContainer),
-      child: Column(children: [Spacer(), Text(widget.instance.name)]),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surfaceContainer,
+        borderRadius: .circular(12),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          crossAxisAlignment: .start,
+          children: [
+            Spacer(),
+            Text(instance.name, style: theme.textTheme.titleMedium),
+            Text(
+              "No playtime",
+              style: theme.textTheme.labelMedium!.copyWith(
+                color: theme.colorScheme.onSurfaceVariant,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

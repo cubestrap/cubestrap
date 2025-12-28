@@ -9,11 +9,16 @@ class RecentInstances extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final instances = ref.watch(instancesProvider);
-    return ListView.builder(
+    return ListView.separated(
       scrollDirection: .horizontal,
       itemCount: instances.length,
+      padding: .only(top: 12, left: 12),
+      separatorBuilder: (context, index) => SizedBox(width: 8),
       itemBuilder: (context, index) {
-        return InstanceCard(instance: instances[index]);
+        return SizedBox(
+          width: index == 0 ? 400 : 250,
+          child: InstanceCard(instance: instances[index]),
+        );
       },
     );
   }

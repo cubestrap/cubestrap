@@ -1,5 +1,6 @@
 import 'package:cubestrap/features/launcher/controllers/client.dart';
 import 'package:cubestrap/features/router/router.dart';
+import 'package:cubestrap/theme/text.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
@@ -51,9 +52,10 @@ class _CubestrapState extends ConsumerState<Cubestrap> {
       title: "Cubestrap",
       theme: ThemeData(
         colorScheme: .fromSeed(
-          seedColor: const Color.fromARGB(255, 31, 62, 128),
+          seedColor: const Color.fromARGB(255, 29, 79, 188),
           brightness: .dark,
         ),
+        textTheme: getBaseTextTheme(),
       ),
       routerConfig: routerController,
     );
