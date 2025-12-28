@@ -1,3 +1,4 @@
+import 'package:cubestrap/features/gamepad/services/gamepad.dart';
 import 'package:cubestrap/features/launcher/controllers/client.dart';
 import 'package:cubestrap/features/router/router.dart';
 import 'package:cubestrap/theme/text.dart';
@@ -9,6 +10,7 @@ import 'package:path_provider/path_provider.dart';
 void main() async {
   await dotenv.load(fileName: ".env");
   baseDocumentDirectory = await getApplicationDocumentsDirectory();
+  GamepadService.initialize();
 
   runApp(ProviderScope(child: const Cubestrap()));
 }
@@ -24,10 +26,18 @@ class _CubestrapState extends ConsumerState<Cubestrap> {
   bool _initializedApi = false;
   Future<void> login() async {
     final profileId = "96747c1c505a420f843e96109b42c0fa";
+    final client = ref.read(cubeClientProvider);
+    await client.authentication.signInToMinecraft(profileId: profileId);
+
+    final manifest = await client.minecraft.getManifest();
+    final details = await client.minecraft.getVersionDetails(
+      manifest.versions.first,
+    );
+
     await ref
         .read(cubeClientProvider)
-        .authentication
-        .signInToMinecraft(profileId: profileId);
+        .instances
+        .create(name: "Test Instance", rawVersionDetails: details);
   }
 
   @override
@@ -37,6 +47,7 @@ class _CubestrapState extends ConsumerState<Cubestrap> {
       setState(() {
         _initializedApi = true;
       });
+      login();
     });
   }
 

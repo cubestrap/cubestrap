@@ -12,10 +12,15 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          SizedBox(height: 300, child: RecentInstances()),
-          Spacer(),
+      body: CustomScrollView(
+        slivers: [
+          SliverList.list(
+            children: [
+              FocusTraversalGroup(
+                child: SizedBox(height: 300, child: RecentInstances()),
+              ),
+            ],
+          ),
         ],
       ),
     );
