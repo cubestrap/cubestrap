@@ -18,7 +18,7 @@ class _InstanceScreenState extends ConsumerState<InstanceScreen> {
         slivers: [
           SliverToBoxAdapter(
             child: Container(
-              height: 200,
+              height: 300,
               decoration: BoxDecoration(
                 color: theme.colorScheme.surfaceContainer,
               ),
