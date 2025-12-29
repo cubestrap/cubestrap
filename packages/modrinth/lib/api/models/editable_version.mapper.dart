@@ -144,6 +144,17 @@ class EditableVersionMapper extends ClassMapperBase<EditableVersion> {
 }
 
 mixin EditableVersionMappable {
+  String toJson() {
+    return EditableVersionMapper.ensureInitialized()
+        .encodeJson<EditableVersion>(this as EditableVersion);
+  }
+
+  Map<String, dynamic> toMap() {
+    return EditableVersionMapper.ensureInitialized().encodeMap<EditableVersion>(
+      this as EditableVersion,
+    );
+  }
+
   EditableVersionCopyWith<EditableVersion, EditableVersion, EditableVersion>
   get copyWith =>
       _EditableVersionCopyWithImpl<EditableVersion, EditableVersion>(

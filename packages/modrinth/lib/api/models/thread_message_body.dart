@@ -11,7 +11,7 @@ import 'thread_message_body_type.dart';
 part 'thread_message_body.mapper.dart';
 
 /// The contents of the message. **Fields will vary depending on message type.**
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class ThreadMessageBody with ThreadMessageBodyMappable {
   const ThreadMessageBody({
     required this.type,
@@ -33,8 +33,6 @@ class ThreadMessageBody with ThreadMessageBodyMappable {
 
 
   static ThreadMessageBody fromJson(Map<String, dynamic> json) => ThreadMessageBodyMapper.ensureInitialized().decodeMap<ThreadMessageBody>(json);
-  Map<String, dynamic> toJson() => ThreadMessageBodyMapper.ensureInitialized().encodeMap<ThreadMessageBody>(this);
-  Map<String, dynamic> toMap() => ThreadMessageBodyMapper.ensureInitialized().encodeMap<ThreadMessageBody>(this);
 
 }
 

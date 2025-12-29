@@ -11,7 +11,7 @@ import 'version_dependency.dart';
 
 part 'creatable_version.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class CreatableVersion with CreatableVersionMappable {
   const CreatableVersion({
     required this.projectId,
@@ -51,8 +51,6 @@ class CreatableVersion with CreatableVersionMappable {
 
 
   static CreatableVersion fromJson(Map<String, dynamic> json) => CreatableVersionMapper.ensureInitialized().decodeMap<CreatableVersion>(json);
-  Map<String, dynamic> toJson() => CreatableVersionMapper.ensureInitialized().encodeMap<CreatableVersion>(this);
-  Map<String, dynamic> toMap() => CreatableVersionMapper.ensureInitialized().encodeMap<CreatableVersion>(this);
 
 }
 

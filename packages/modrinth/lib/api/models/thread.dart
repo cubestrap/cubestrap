@@ -10,7 +10,7 @@ import 'user.dart';
 
 part 'thread.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class Thread with ThreadMappable {
   const Thread({
     required this.id,
@@ -31,8 +31,6 @@ class Thread with ThreadMappable {
 
 
   static Thread fromJson(Map<String, dynamic> json) => ThreadMapper.ensureInitialized().decodeMap<Thread>(json);
-  Map<String, dynamic> toJson() => ThreadMapper.ensureInitialized().encodeMap<Thread>(this);
-  Map<String, dynamic> toMap() => ThreadMapper.ensureInitialized().encodeMap<Thread>(this);
 
 }
 

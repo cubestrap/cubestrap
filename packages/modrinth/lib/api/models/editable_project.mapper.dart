@@ -214,6 +214,17 @@ class EditableProjectMapper extends ClassMapperBase<EditableProject> {
 }
 
 mixin EditableProjectMappable {
+  String toJson() {
+    return EditableProjectMapper.ensureInitialized()
+        .encodeJson<EditableProject>(this as EditableProject);
+  }
+
+  Map<String, dynamic> toMap() {
+    return EditableProjectMapper.ensureInitialized().encodeMap<EditableProject>(
+      this as EditableProject,
+    );
+  }
+
   EditableProjectCopyWith<EditableProject, EditableProject, EditableProject>
   get copyWith =>
       _EditableProjectCopyWithImpl<EditableProject, EditableProject>(

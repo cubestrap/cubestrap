@@ -11,7 +11,7 @@ import 'server_rendered_project_project_type.dart';
 
 part 'server_rendered_project.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class ServerRenderedProject with ServerRenderedProjectMappable {
   const ServerRenderedProject({
     required this.projectType,
@@ -48,8 +48,6 @@ class ServerRenderedProject with ServerRenderedProjectMappable {
 
 
   static ServerRenderedProject fromJson(Map<String, dynamic> json) => ServerRenderedProjectMapper.ensureInitialized().decodeMap<ServerRenderedProject>(json);
-  Map<String, dynamic> toJson() => ServerRenderedProjectMapper.ensureInitialized().encodeMap<ServerRenderedProject>(this);
-  Map<String, dynamic> toMap() => ServerRenderedProjectMapper.ensureInitialized().encodeMap<ServerRenderedProject>(this);
 
 }
 

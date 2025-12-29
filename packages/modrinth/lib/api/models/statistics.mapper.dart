@@ -76,6 +76,18 @@ class StatisticsMapper extends ClassMapperBase<Statistics> {
 }
 
 mixin StatisticsMappable {
+  String toJson() {
+    return StatisticsMapper.ensureInitialized().encodeJson<Statistics>(
+      this as Statistics,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return StatisticsMapper.ensureInitialized().encodeMap<Statistics>(
+      this as Statistics,
+    );
+  }
+
   StatisticsCopyWith<Statistics, Statistics, Statistics> get copyWith =>
       _StatisticsCopyWithImpl<Statistics, Statistics>(
         this as Statistics,

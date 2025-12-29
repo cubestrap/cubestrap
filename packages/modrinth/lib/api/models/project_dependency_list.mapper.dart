@@ -63,6 +63,16 @@ class ProjectDependencyListMapper
 }
 
 mixin ProjectDependencyListMappable {
+  String toJson() {
+    return ProjectDependencyListMapper.ensureInitialized()
+        .encodeJson<ProjectDependencyList>(this as ProjectDependencyList);
+  }
+
+  Map<String, dynamic> toMap() {
+    return ProjectDependencyListMapper.ensureInitialized()
+        .encodeMap<ProjectDependencyList>(this as ProjectDependencyList);
+  }
+
   ProjectDependencyListCopyWith<
     ProjectDependencyList,
     ProjectDependencyList,

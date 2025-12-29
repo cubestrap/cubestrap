@@ -48,6 +48,18 @@ class UserIdentifierMapper extends ClassMapperBase<UserIdentifier> {
 }
 
 mixin UserIdentifierMappable {
+  String toJson() {
+    return UserIdentifierMapper.ensureInitialized().encodeJson<UserIdentifier>(
+      this as UserIdentifier,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return UserIdentifierMapper.ensureInitialized().encodeMap<UserIdentifier>(
+      this as UserIdentifier,
+    );
+  }
+
   UserIdentifierCopyWith<UserIdentifier, UserIdentifier, UserIdentifier>
   get copyWith => _UserIdentifierCopyWithImpl<UserIdentifier, UserIdentifier>(
     this as UserIdentifier,

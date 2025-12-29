@@ -7,7 +7,7 @@ import 'package:dart_mappable/dart_mappable.dart';
 part 'notification_action.mapper.dart';
 
 /// An action that can be performed on a notification
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class NotificationAction with NotificationActionMappable {
   const NotificationAction({
     this.title,
@@ -19,8 +19,6 @@ class NotificationAction with NotificationActionMappable {
 
 
   static NotificationAction fromJson(Map<String, dynamic> json) => NotificationActionMapper.ensureInitialized().decodeMap<NotificationAction>(json);
-  Map<String, dynamic> toJson() => NotificationActionMapper.ensureInitialized().encodeMap<NotificationAction>(this);
-  Map<String, dynamic> toMap() => NotificationActionMapper.ensureInitialized().encodeMap<NotificationAction>(this);
 
 }
 

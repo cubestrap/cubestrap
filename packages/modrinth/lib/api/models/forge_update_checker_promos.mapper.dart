@@ -65,6 +65,16 @@ class ForgeUpdateCheckerPromosMapper
 }
 
 mixin ForgeUpdateCheckerPromosMappable {
+  String toJson() {
+    return ForgeUpdateCheckerPromosMapper.ensureInitialized()
+        .encodeJson<ForgeUpdateCheckerPromos>(this as ForgeUpdateCheckerPromos);
+  }
+
+  Map<String, dynamic> toMap() {
+    return ForgeUpdateCheckerPromosMapper.ensureInitialized()
+        .encodeMap<ForgeUpdateCheckerPromos>(this as ForgeUpdateCheckerPromos);
+  }
+
   ForgeUpdateCheckerPromosCopyWith<
     ForgeUpdateCheckerPromos,
     ForgeUpdateCheckerPromos,

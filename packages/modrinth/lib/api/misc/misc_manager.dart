@@ -11,7 +11,7 @@ import '../models/statistics.dart';
 
 part 'misc_manager.g.dart';
 
-@RestApi()
+@RestApi(parser: Parser.DartMappable)
 abstract class MiscManager {
   factory MiscManager(Dio dio, {String? baseUrl}) = _MiscManager;
 

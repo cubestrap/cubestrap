@@ -72,6 +72,18 @@ class ThreadMessageMapper extends ClassMapperBase<ThreadMessage> {
 }
 
 mixin ThreadMessageMappable {
+  String toJson() {
+    return ThreadMessageMapper.ensureInitialized().encodeJson<ThreadMessage>(
+      this as ThreadMessage,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return ThreadMessageMapper.ensureInitialized().encodeMap<ThreadMessage>(
+      this as ThreadMessage,
+    );
+  }
+
   ThreadMessageCopyWith<ThreadMessage, ThreadMessage, ThreadMessage>
   get copyWith => _ThreadMessageCopyWithImpl<ThreadMessage, ThreadMessage>(
     this as ThreadMessage,

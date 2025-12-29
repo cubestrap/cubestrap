@@ -12,7 +12,7 @@ import 'project_donation_url.dart';
 
 part 'editable_project.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class EditableProject with EditableProjectMappable {
   const EditableProject({
     this.slug,
@@ -70,8 +70,6 @@ class EditableProject with EditableProjectMappable {
 
 
   static EditableProject fromJson(Map<String, dynamic> json) => EditableProjectMapper.ensureInitialized().decodeMap<EditableProject>(json);
-  Map<String, dynamic> toJson() => EditableProjectMapper.ensureInitialized().encodeMap<EditableProject>(this);
-  Map<String, dynamic> toMap() => EditableProjectMapper.ensureInitialized().encodeMap<EditableProject>(this);
 
 }
 

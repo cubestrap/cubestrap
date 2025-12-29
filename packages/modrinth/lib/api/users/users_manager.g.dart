@@ -43,7 +43,7 @@ class _UsersManager implements UsersManager {
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late User _value;
     try {
-      _value = User.fromJson(_result.data!);
+      _value = UserMapper.fromMap(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
@@ -63,7 +63,7 @@ class _UsersManager implements UsersManager {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(body?.toJson() ?? <String, dynamic>{});
+    _data.addAll(body?.toMap() ?? <String, dynamic>{});
     final _options = _setStreamType<void>(
       Options(method: 'PATCH', headers: _headers, extra: _extra)
           .compose(
@@ -98,7 +98,7 @@ class _UsersManager implements UsersManager {
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late User _value;
     try {
-      _value = User.fromJson(_result.data!);
+      _value = UserMapper.fromMap(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
@@ -131,7 +131,7 @@ class _UsersManager implements UsersManager {
     late List<User> _value;
     try {
       _value = _result.data!
-          .map((dynamic i) => User.fromJson(i as Map<String, dynamic>))
+          .map((dynamic i) => UserMapper.fromMap(i as Map<String, dynamic>))
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
@@ -214,7 +214,7 @@ class _UsersManager implements UsersManager {
     late List<Project> _value;
     try {
       _value = _result.data!
-          .map((dynamic i) => Project.fromJson(i as Map<String, dynamic>))
+          .map((dynamic i) => ProjectMapper.fromMap(i as Map<String, dynamic>))
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
@@ -248,7 +248,7 @@ class _UsersManager implements UsersManager {
     late List<Project> _value;
     try {
       _value = _result.data!
-          .map((dynamic i) => Project.fromJson(i as Map<String, dynamic>))
+          .map((dynamic i) => ProjectMapper.fromMap(i as Map<String, dynamic>))
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
@@ -281,7 +281,7 @@ class _UsersManager implements UsersManager {
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late UserPayoutHistory _value;
     try {
-      _value = UserPayoutHistory.fromJson(_result.data!);
+      _value = UserPayoutHistoryMapper.fromMap(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;

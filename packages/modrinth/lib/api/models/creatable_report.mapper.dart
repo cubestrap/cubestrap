@@ -70,6 +70,17 @@ class CreatableReportMapper extends ClassMapperBase<CreatableReport> {
 }
 
 mixin CreatableReportMappable {
+  String toJson() {
+    return CreatableReportMapper.ensureInitialized()
+        .encodeJson<CreatableReport>(this as CreatableReport);
+  }
+
+  Map<String, dynamic> toMap() {
+    return CreatableReportMapper.ensureInitialized().encodeMap<CreatableReport>(
+      this as CreatableReport,
+    );
+  }
+
   CreatableReportCopyWith<CreatableReport, CreatableReport, CreatableReport>
   get copyWith =>
       _CreatableReportCopyWithImpl<CreatableReport, CreatableReport>(

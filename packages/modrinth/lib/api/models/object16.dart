@@ -6,7 +6,7 @@ import 'package:dart_mappable/dart_mappable.dart';
 
 part 'object16.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class Object16 with Object16Mappable {
   const Object16({
     this.body,
@@ -17,8 +17,6 @@ class Object16 with Object16Mappable {
 
 
   static Object16 fromJson(Map<String, dynamic> json) => Object16Mapper.ensureInitialized().decodeMap<Object16>(json);
-  Map<String, dynamic> toJson() => Object16Mapper.ensureInitialized().encodeMap<Object16>(this);
-  Map<String, dynamic> toMap() => Object16Mapper.ensureInitialized().encodeMap<Object16>(this);
 
 }
 

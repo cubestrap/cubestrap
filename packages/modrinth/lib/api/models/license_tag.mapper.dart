@@ -49,6 +49,18 @@ class LicenseTagMapper extends ClassMapperBase<LicenseTag> {
 }
 
 mixin LicenseTagMappable {
+  String toJson() {
+    return LicenseTagMapper.ensureInitialized().encodeJson<LicenseTag>(
+      this as LicenseTag,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return LicenseTagMapper.ensureInitialized().encodeMap<LicenseTag>(
+      this as LicenseTag,
+    );
+  }
+
   LicenseTagCopyWith<LicenseTag, LicenseTag, LicenseTag> get copyWith =>
       _LicenseTagCopyWithImpl<LicenseTag, LicenseTag>(
         this as LicenseTag,

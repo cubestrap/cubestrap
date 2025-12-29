@@ -77,6 +77,16 @@ class ModifyTeamMemberBodyMapper extends ClassMapperBase<ModifyTeamMemberBody> {
 }
 
 mixin ModifyTeamMemberBodyMappable {
+  String toJson() {
+    return ModifyTeamMemberBodyMapper.ensureInitialized()
+        .encodeJson<ModifyTeamMemberBody>(this as ModifyTeamMemberBody);
+  }
+
+  Map<String, dynamic> toMap() {
+    return ModifyTeamMemberBodyMapper.ensureInitialized()
+        .encodeMap<ModifyTeamMemberBody>(this as ModifyTeamMemberBody);
+  }
+
   ModifyTeamMemberBodyCopyWith<
     ModifyTeamMemberBody,
     ModifyTeamMemberBody,

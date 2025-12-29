@@ -148,6 +148,14 @@ class UserMapper extends ClassMapperBase<User> {
 }
 
 mixin UserMappable {
+  String toJson() {
+    return UserMapper.ensureInitialized().encodeJson<User>(this as User);
+  }
+
+  Map<String, dynamic> toMap() {
+    return UserMapper.ensureInitialized().encodeMap<User>(this as User);
+  }
+
   UserCopyWith<User, User, User> get copyWith =>
       _UserCopyWithImpl<User, User>(this as User, $identity, $identity);
   @override

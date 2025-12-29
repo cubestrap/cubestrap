@@ -57,6 +57,18 @@ class LicenseMapper extends ClassMapperBase<License> {
 }
 
 mixin LicenseMappable {
+  String toJson() {
+    return LicenseMapper.ensureInitialized().encodeJson<License>(
+      this as License,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return LicenseMapper.ensureInitialized().encodeMap<License>(
+      this as License,
+    );
+  }
+
   LicenseCopyWith<License, License, License> get copyWith =>
       _LicenseCopyWithImpl<License, License>(
         this as License,

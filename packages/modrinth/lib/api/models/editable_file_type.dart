@@ -8,7 +8,7 @@ import 'file_type_enum.dart';
 
 part 'editable_file_type.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class EditableFileType with EditableFileTypeMappable {
   const EditableFileType({
     required this.algorithm,
@@ -22,8 +22,6 @@ class EditableFileType with EditableFileTypeMappable {
 
 
   static EditableFileType fromJson(Map<String, dynamic> json) => EditableFileTypeMapper.ensureInitialized().decodeMap<EditableFileType>(json);
-  Map<String, dynamic> toJson() => EditableFileTypeMapper.ensureInitialized().encodeMap<EditableFileType>(this);
-  Map<String, dynamic> toMap() => EditableFileTypeMapper.ensureInitialized().encodeMap<EditableFileType>(this);
 
 }
 

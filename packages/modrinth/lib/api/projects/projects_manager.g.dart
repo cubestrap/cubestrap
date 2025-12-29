@@ -31,7 +31,7 @@ class _ProjectsManager implements ProjectsManager {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
     final queryParameters = <String, dynamic>{
-      r'index': index,
+      r'index': index?.toValue(),
       r'offset': offset,
       r'limit': limit,
       r'query': query,
@@ -53,7 +53,7 @@ class _ProjectsManager implements ProjectsManager {
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late SearchResults _value;
     try {
-      _value = SearchResults.fromJson(_result.data!);
+      _value = SearchResultsMapper.fromMap(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
@@ -85,7 +85,7 @@ class _ProjectsManager implements ProjectsManager {
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late Project _value;
     try {
-      _value = Project.fromJson(_result.data!);
+      _value = ProjectMapper.fromMap(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
@@ -105,7 +105,7 @@ class _ProjectsManager implements ProjectsManager {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(body?.toJson() ?? <String, dynamic>{});
+    _data.addAll(body?.toMap() ?? <String, dynamic>{});
     final _options = _setStreamType<void>(
       Options(method: 'PATCH', headers: _headers, extra: _extra)
           .compose(
@@ -168,7 +168,7 @@ class _ProjectsManager implements ProjectsManager {
     late List<Project> _value;
     try {
       _value = _result.data!
-          .map((dynamic i) => Project.fromJson(i as Map<String, dynamic>))
+          .map((dynamic i) => ProjectMapper.fromMap(i as Map<String, dynamic>))
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
@@ -189,7 +189,7 @@ class _ProjectsManager implements ProjectsManager {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(body?.toJson() ?? <String, dynamic>{});
+    _data.addAll(body?.toMap() ?? <String, dynamic>{});
     final _options = _setStreamType<void>(
       Options(method: 'PATCH', headers: _headers, extra: _extra)
           .compose(
@@ -228,7 +228,7 @@ class _ProjectsManager implements ProjectsManager {
     late List<Project> _value;
     try {
       _value = _result.data!
-          .map((dynamic i) => Project.fromJson(i as Map<String, dynamic>))
+          .map((dynamic i) => ProjectMapper.fromMap(i as Map<String, dynamic>))
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
@@ -271,7 +271,7 @@ class _ProjectsManager implements ProjectsManager {
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late Project _value;
     try {
-      _value = Project.fromJson(_result.data!);
+      _value = ProjectMapper.fromMap(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
@@ -288,7 +288,7 @@ class _ProjectsManager implements ProjectsManager {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{r'ext': ext};
+    final queryParameters = <String, dynamic>{r'ext': ext.toValue()};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = body;
@@ -353,7 +353,7 @@ class _ProjectsManager implements ProjectsManager {
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late ProjectIdentifier _value;
     try {
-      _value = ProjectIdentifier.fromJson(_result.data!);
+      _value = ProjectIdentifierMapper.fromMap(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
@@ -375,7 +375,7 @@ class _ProjectsManager implements ProjectsManager {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
     final queryParameters = <String, dynamic>{
-      r'ext': ext,
+      r'ext': ext.toValue(),
       r'featured': featured,
       r'title': title,
       r'description': description,
@@ -481,7 +481,7 @@ class _ProjectsManager implements ProjectsManager {
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late ProjectDependencyList _value;
     try {
-      _value = ProjectDependencyList.fromJson(_result.data!);
+      _value = ProjectDependencyListMapper.fromMap(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
@@ -549,7 +549,7 @@ class _ProjectsManager implements ProjectsManager {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(body?.toJson() ?? <String, dynamic>{});
+    _data.addAll(body?.toMap() ?? <String, dynamic>{});
     final _options = _setStreamType<void>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(

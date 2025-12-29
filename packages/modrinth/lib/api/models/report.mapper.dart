@@ -100,6 +100,14 @@ class ReportMapper extends ClassMapperBase<Report> {
 }
 
 mixin ReportMappable {
+  String toJson() {
+    return ReportMapper.ensureInitialized().encodeJson<Report>(this as Report);
+  }
+
+  Map<String, dynamic> toMap() {
+    return ReportMapper.ensureInitialized().encodeMap<Report>(this as Report);
+  }
+
   ReportCopyWith<Report, Report, Report> get copyWith =>
       _ReportCopyWithImpl<Report, Report>(this as Report, $identity, $identity);
   @override

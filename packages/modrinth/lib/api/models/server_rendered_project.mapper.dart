@@ -158,6 +158,16 @@ class ServerRenderedProjectMapper
 }
 
 mixin ServerRenderedProjectMappable {
+  String toJson() {
+    return ServerRenderedProjectMapper.ensureInitialized()
+        .encodeJson<ServerRenderedProject>(this as ServerRenderedProject);
+  }
+
+  Map<String, dynamic> toMap() {
+    return ServerRenderedProjectMapper.ensureInitialized()
+        .encodeMap<ServerRenderedProject>(this as ServerRenderedProject);
+  }
+
   ServerRenderedProjectCopyWith<
     ServerRenderedProject,
     ServerRenderedProject,

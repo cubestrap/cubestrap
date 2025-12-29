@@ -27,7 +27,7 @@ class _MiscManager implements MiscManager {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{r'neoforge': neoforge};
+    final queryParameters = <String, dynamic>{r'neoforge': neoforge?.toValue()};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -44,7 +44,7 @@ class _MiscManager implements MiscManager {
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late ForgeUpdates _value;
     try {
-      _value = ForgeUpdates.fromJson(_result.data!);
+      _value = ForgeUpdatesMapper.fromMap(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
@@ -73,7 +73,7 @@ class _MiscManager implements MiscManager {
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late Statistics _value;
     try {
-      _value = Statistics.fromJson(_result.data!);
+      _value = StatisticsMapper.fromMap(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;

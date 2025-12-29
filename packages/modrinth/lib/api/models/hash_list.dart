@@ -9,7 +9,7 @@ import 'hash_list_algorithm.dart';
 part 'hash_list.mapper.dart';
 
 /// A list of hashes and the algorithm used to create them
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class HashList with HashListMappable {
   const HashList({
     required this.hashes,
@@ -20,8 +20,6 @@ class HashList with HashListMappable {
 
 
   static HashList fromJson(Map<String, dynamic> json) => HashListMapper.ensureInitialized().decodeMap<HashList>(json);
-  Map<String, dynamic> toJson() => HashListMapper.ensureInitialized().encodeMap<HashList>(this);
-  Map<String, dynamic> toMap() => HashListMapper.ensureInitialized().encodeMap<HashList>(this);
 
 }
 

@@ -64,6 +64,16 @@ class EditableFileTypeMapper extends ClassMapperBase<EditableFileType> {
 }
 
 mixin EditableFileTypeMappable {
+  String toJson() {
+    return EditableFileTypeMapper.ensureInitialized()
+        .encodeJson<EditableFileType>(this as EditableFileType);
+  }
+
+  Map<String, dynamic> toMap() {
+    return EditableFileTypeMapper.ensureInitialized()
+        .encodeMap<EditableFileType>(this as EditableFileType);
+  }
+
   EditableFileTypeCopyWith<EditableFileType, EditableFileType, EditableFileType>
   get copyWith =>
       _EditableFileTypeCopyWithImpl<EditableFileType, EditableFileType>(

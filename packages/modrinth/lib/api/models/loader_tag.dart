@@ -6,7 +6,7 @@ import 'package:dart_mappable/dart_mappable.dart';
 
 part 'loader_tag.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class LoaderTag with LoaderTagMappable {
   const LoaderTag({
     required this.icon,
@@ -20,8 +20,6 @@ class LoaderTag with LoaderTagMappable {
 
 
   static LoaderTag fromJson(Map<String, dynamic> json) => LoaderTagMapper.ensureInitialized().decodeMap<LoaderTag>(json);
-  Map<String, dynamic> toJson() => LoaderTagMapper.ensureInitialized().encodeMap<LoaderTag>(this);
-  Map<String, dynamic> toMap() => LoaderTagMapper.ensureInitialized().encodeMap<LoaderTag>(this);
 
 }
 

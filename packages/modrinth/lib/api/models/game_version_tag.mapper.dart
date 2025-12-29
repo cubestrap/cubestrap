@@ -66,6 +66,18 @@ class GameVersionTagMapper extends ClassMapperBase<GameVersionTag> {
 }
 
 mixin GameVersionTagMappable {
+  String toJson() {
+    return GameVersionTagMapper.ensureInitialized().encodeJson<GameVersionTag>(
+      this as GameVersionTag,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return GameVersionTagMapper.ensureInitialized().encodeMap<GameVersionTag>(
+      this as GameVersionTag,
+    );
+  }
+
   GameVersionTagCopyWith<GameVersionTag, GameVersionTag, GameVersionTag>
   get copyWith => _GameVersionTagCopyWithImpl<GameVersionTag, GameVersionTag>(
     this as GameVersionTag,

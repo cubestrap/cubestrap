@@ -6,7 +6,7 @@ import 'package:dart_mappable/dart_mappable.dart';
 
 part 'creatable_project_gallery_item.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class CreatableProjectGalleryItem with CreatableProjectGalleryItemMappable {
   const CreatableProjectGalleryItem({
     this.item,
@@ -23,8 +23,6 @@ class CreatableProjectGalleryItem with CreatableProjectGalleryItemMappable {
 
 
   static CreatableProjectGalleryItem fromJson(Map<String, dynamic> json) => CreatableProjectGalleryItemMapper.ensureInitialized().decodeMap<CreatableProjectGalleryItem>(json);
-  Map<String, dynamic> toJson() => CreatableProjectGalleryItemMapper.ensureInitialized().encodeMap<CreatableProjectGalleryItem>(this);
-  Map<String, dynamic> toMap() => CreatableProjectGalleryItemMapper.ensureInitialized().encodeMap<CreatableProjectGalleryItem>(this);
 
 }
 

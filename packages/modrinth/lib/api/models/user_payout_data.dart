@@ -10,7 +10,7 @@ import 'user_payout_data_payout_wallet_type.dart';
 part 'user_payout_data.mapper.dart';
 
 /// Various data relating to the user's payouts status (you can only see your own)
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class UserPayoutData with UserPayoutDataMappable {
   const UserPayoutData({
     this.balance,
@@ -28,8 +28,6 @@ class UserPayoutData with UserPayoutDataMappable {
 
 
   static UserPayoutData fromJson(Map<String, dynamic> json) => UserPayoutDataMapper.ensureInitialized().decodeMap<UserPayoutData>(json);
-  Map<String, dynamic> toJson() => UserPayoutDataMapper.ensureInitialized().encodeMap<UserPayoutData>(this);
-  Map<String, dynamic> toMap() => UserPayoutDataMapper.ensureInitialized().encodeMap<UserPayoutData>(this);
 
 }
 

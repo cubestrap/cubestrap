@@ -6,7 +6,7 @@ import 'package:dart_mappable/dart_mappable.dart';
 
 part 'project_donation_url.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class ProjectDonationUrl with ProjectDonationUrlMappable {
   const ProjectDonationUrl({
     this.id,
@@ -19,8 +19,6 @@ class ProjectDonationUrl with ProjectDonationUrlMappable {
 
 
   static ProjectDonationUrl fromJson(Map<String, dynamic> json) => ProjectDonationUrlMapper.ensureInitialized().decodeMap<ProjectDonationUrl>(json);
-  Map<String, dynamic> toJson() => ProjectDonationUrlMapper.ensureInitialized().encodeMap<ProjectDonationUrl>(this);
-  Map<String, dynamic> toMap() => ProjectDonationUrlMapper.ensureInitialized().encodeMap<ProjectDonationUrl>(this);
 
 }
 

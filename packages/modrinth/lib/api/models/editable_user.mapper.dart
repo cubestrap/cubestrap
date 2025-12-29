@@ -85,6 +85,18 @@ class EditableUserMapper extends ClassMapperBase<EditableUser> {
 }
 
 mixin EditableUserMappable {
+  String toJson() {
+    return EditableUserMapper.ensureInitialized().encodeJson<EditableUser>(
+      this as EditableUser,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return EditableUserMapper.ensureInitialized().encodeMap<EditableUser>(
+      this as EditableUser,
+    );
+  }
+
   EditableUserCopyWith<EditableUser, EditableUser, EditableUser> get copyWith =>
       _EditableUserCopyWithImpl<EditableUser, EditableUser>(
         this as EditableUser,

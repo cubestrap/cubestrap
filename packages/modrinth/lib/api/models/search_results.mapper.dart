@@ -68,6 +68,18 @@ class SearchResultsMapper extends ClassMapperBase<SearchResults> {
 }
 
 mixin SearchResultsMappable {
+  String toJson() {
+    return SearchResultsMapper.ensureInitialized().encodeJson<SearchResults>(
+      this as SearchResults,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return SearchResultsMapper.ensureInitialized().encodeMap<SearchResults>(
+      this as SearchResults,
+    );
+  }
+
   SearchResultsCopyWith<SearchResults, SearchResults, SearchResults>
   get copyWith => _SearchResultsCopyWithImpl<SearchResults, SearchResults>(
     this as SearchResults,

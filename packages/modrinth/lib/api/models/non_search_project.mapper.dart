@@ -176,6 +176,16 @@ class NonSearchProjectMapper extends ClassMapperBase<NonSearchProject> {
 }
 
 mixin NonSearchProjectMappable {
+  String toJson() {
+    return NonSearchProjectMapper.ensureInitialized()
+        .encodeJson<NonSearchProject>(this as NonSearchProject);
+  }
+
+  Map<String, dynamic> toMap() {
+    return NonSearchProjectMapper.ensureInitialized()
+        .encodeMap<NonSearchProject>(this as NonSearchProject);
+  }
+
   NonSearchProjectCopyWith<NonSearchProject, NonSearchProject, NonSearchProject>
   get copyWith =>
       _NonSearchProjectCopyWithImpl<NonSearchProject, NonSearchProject>(

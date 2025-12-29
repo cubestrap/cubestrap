@@ -61,6 +61,18 @@ class ForgeUpdatesMapper extends ClassMapperBase<ForgeUpdates> {
 }
 
 mixin ForgeUpdatesMappable {
+  String toJson() {
+    return ForgeUpdatesMapper.ensureInitialized().encodeJson<ForgeUpdates>(
+      this as ForgeUpdates,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return ForgeUpdatesMapper.ensureInitialized().encodeMap<ForgeUpdates>(
+      this as ForgeUpdates,
+    );
+  }
+
   ForgeUpdatesCopyWith<ForgeUpdates, ForgeUpdates, ForgeUpdates> get copyWith =>
       _ForgeUpdatesCopyWithImpl<ForgeUpdates, ForgeUpdates>(
         this as ForgeUpdates,

@@ -12,7 +12,7 @@ import 'version_dependency.dart';
 
 part 'editable_version.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class EditableVersion with EditableVersionMappable {
   const EditableVersion({
     this.name,
@@ -49,8 +49,6 @@ class EditableVersion with EditableVersionMappable {
 
 
   static EditableVersion fromJson(Map<String, dynamic> json) => EditableVersionMapper.ensureInitialized().decodeMap<EditableVersion>(json);
-  Map<String, dynamic> toJson() => EditableVersionMapper.ensureInitialized().encodeMap<EditableVersion>(this);
-  Map<String, dynamic> toMap() => EditableVersionMapper.ensureInitialized().encodeMap<EditableVersion>(this);
 
 }
 

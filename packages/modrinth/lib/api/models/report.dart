@@ -9,7 +9,7 @@ import 'creatable_report_item_type.dart';
 
 part 'report.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class Report with ReportMappable {
   const Report({
     required this.reportType,
@@ -38,8 +38,6 @@ class Report with ReportMappable {
 
 
   static Report fromJson(Map<String, dynamic> json) => ReportMapper.ensureInitialized().decodeMap<Report>(json);
-  Map<String, dynamic> toJson() => ReportMapper.ensureInitialized().encodeMap<Report>(this);
-  Map<String, dynamic> toMap() => ReportMapper.ensureInitialized().encodeMap<Report>(this);
 
 }
 

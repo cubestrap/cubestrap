@@ -48,6 +48,16 @@ class ProjectIdentifierMapper extends ClassMapperBase<ProjectIdentifier> {
 }
 
 mixin ProjectIdentifierMappable {
+  String toJson() {
+    return ProjectIdentifierMapper.ensureInitialized()
+        .encodeJson<ProjectIdentifier>(this as ProjectIdentifier);
+  }
+
+  Map<String, dynamic> toMap() {
+    return ProjectIdentifierMapper.ensureInitialized()
+        .encodeMap<ProjectIdentifier>(this as ProjectIdentifier);
+  }
+
   ProjectIdentifierCopyWith<
     ProjectIdentifier,
     ProjectIdentifier,

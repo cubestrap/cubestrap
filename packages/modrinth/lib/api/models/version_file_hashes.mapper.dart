@@ -60,6 +60,16 @@ class VersionFileHashesMapper extends ClassMapperBase<VersionFileHashes> {
 }
 
 mixin VersionFileHashesMappable {
+  String toJson() {
+    return VersionFileHashesMapper.ensureInitialized()
+        .encodeJson<VersionFileHashes>(this as VersionFileHashes);
+  }
+
+  Map<String, dynamic> toMap() {
+    return VersionFileHashesMapper.ensureInitialized()
+        .encodeMap<VersionFileHashes>(this as VersionFileHashes);
+  }
+
   VersionFileHashesCopyWith<
     VersionFileHashes,
     VersionFileHashes,

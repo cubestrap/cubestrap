@@ -11,7 +11,7 @@ import '../models/user_identifier.dart';
 
 part 'teams_manager.g.dart';
 
-@RestApi()
+@RestApi(parser: Parser.DartMappable)
 abstract class TeamsManager {
   factory TeamsManager(Dio dio, {String? baseUrl}) = _TeamsManager;
 

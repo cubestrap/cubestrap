@@ -8,7 +8,7 @@ import 'project_donation_url.dart';
 
 part 'patch_projects_body.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class PatchProjectsBody with PatchProjectsBodyMappable {
   const PatchProjectsBody({
     this.categories,
@@ -53,8 +53,6 @@ class PatchProjectsBody with PatchProjectsBodyMappable {
 
 
   static PatchProjectsBody fromJson(Map<String, dynamic> json) => PatchProjectsBodyMapper.ensureInitialized().decodeMap<PatchProjectsBody>(json);
-  Map<String, dynamic> toJson() => PatchProjectsBodyMapper.ensureInitialized().encodeMap<PatchProjectsBody>(this);
-  Map<String, dynamic> toMap() => PatchProjectsBodyMapper.ensureInitialized().encodeMap<PatchProjectsBody>(this);
 
 }
 

@@ -57,6 +57,18 @@ class Object16Mapper extends ClassMapperBase<Object16> {
 }
 
 mixin Object16Mappable {
+  String toJson() {
+    return Object16Mapper.ensureInitialized().encodeJson<Object16>(
+      this as Object16,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return Object16Mapper.ensureInitialized().encodeMap<Object16>(
+      this as Object16,
+    );
+  }
+
   Object16CopyWith<Object16, Object16, Object16> get copyWith =>
       _Object16CopyWithImpl<Object16, Object16>(
         this as Object16,

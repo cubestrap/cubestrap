@@ -8,7 +8,7 @@ import 'hash_list_algorithm.dart';
 
 part 'get_latest_versions_from_hashes_body.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class GetLatestVersionsFromHashesBody with GetLatestVersionsFromHashesBodyMappable {
   const GetLatestVersionsFromHashesBody({
     required this.hashes,
@@ -24,8 +24,6 @@ class GetLatestVersionsFromHashesBody with GetLatestVersionsFromHashesBodyMappab
 
 
   static GetLatestVersionsFromHashesBody fromJson(Map<String, dynamic> json) => GetLatestVersionsFromHashesBodyMapper.ensureInitialized().decodeMap<GetLatestVersionsFromHashesBody>(json);
-  Map<String, dynamic> toJson() => GetLatestVersionsFromHashesBodyMapper.ensureInitialized().encodeMap<GetLatestVersionsFromHashesBody>(this);
-  Map<String, dynamic> toMap() => GetLatestVersionsFromHashesBodyMapper.ensureInitialized().encodeMap<GetLatestVersionsFromHashesBody>(this);
 
 }
 

@@ -17,7 +17,7 @@ import 'server_rendered_project_project_type.dart';
 
 part 'project.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class Project with ProjectMappable {
   const Project({
     required this.followers,
@@ -110,8 +110,6 @@ class Project with ProjectMappable {
 
 
   static Project fromJson(Map<String, dynamic> json) => ProjectMapper.ensureInitialized().decodeMap<Project>(json);
-  Map<String, dynamic> toJson() => ProjectMapper.ensureInitialized().encodeMap<Project>(this);
-  Map<String, dynamic> toMap() => ProjectMapper.ensureInitialized().encodeMap<Project>(this);
 
 }
 

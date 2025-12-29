@@ -55,6 +55,18 @@ class AuthErrorMapper extends ClassMapperBase<AuthError> {
 }
 
 mixin AuthErrorMappable {
+  String toJson() {
+    return AuthErrorMapper.ensureInitialized().encodeJson<AuthError>(
+      this as AuthError,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return AuthErrorMapper.ensureInitialized().encodeMap<AuthError>(
+      this as AuthError,
+    );
+  }
+
   AuthErrorCopyWith<AuthError, AuthError, AuthError> get copyWith =>
       _AuthErrorCopyWithImpl<AuthError, AuthError>(
         this as AuthError,

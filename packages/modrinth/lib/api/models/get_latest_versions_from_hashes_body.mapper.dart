@@ -76,6 +76,20 @@ class GetLatestVersionsFromHashesBodyMapper
 }
 
 mixin GetLatestVersionsFromHashesBodyMappable {
+  String toJson() {
+    return GetLatestVersionsFromHashesBodyMapper.ensureInitialized()
+        .encodeJson<GetLatestVersionsFromHashesBody>(
+          this as GetLatestVersionsFromHashesBody,
+        );
+  }
+
+  Map<String, dynamic> toMap() {
+    return GetLatestVersionsFromHashesBodyMapper.ensureInitialized()
+        .encodeMap<GetLatestVersionsFromHashesBody>(
+          this as GetLatestVersionsFromHashesBody,
+        );
+  }
+
   GetLatestVersionsFromHashesBodyCopyWith<
     GetLatestVersionsFromHashesBody,
     GetLatestVersionsFromHashesBody,

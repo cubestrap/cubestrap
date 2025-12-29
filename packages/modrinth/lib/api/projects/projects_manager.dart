@@ -22,7 +22,7 @@ import '../models/search_results.dart';
 
 part 'projects_manager.g.dart';
 
-@RestApi()
+@RestApi(parser: Parser.DartMappable)
 abstract class ProjectsManager {
   factory ProjectsManager(Dio dio, {String? baseUrl}) = _ProjectsManager;
 

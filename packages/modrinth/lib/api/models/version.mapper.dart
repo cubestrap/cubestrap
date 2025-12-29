@@ -186,6 +186,18 @@ class VersionMapper extends ClassMapperBase<Version> {
 }
 
 mixin VersionMappable {
+  String toJson() {
+    return VersionMapper.ensureInitialized().encodeJson<Version>(
+      this as Version,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return VersionMapper.ensureInitialized().encodeMap<Version>(
+      this as Version,
+    );
+  }
+
   VersionCopyWith<Version, Version, Version> get copyWith =>
       _VersionCopyWithImpl<Version, Version>(
         this as Version,

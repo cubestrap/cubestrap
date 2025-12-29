@@ -86,6 +86,18 @@ class GalleryImageMapper extends ClassMapperBase<GalleryImage> {
 }
 
 mixin GalleryImageMappable {
+  String toJson() {
+    return GalleryImageMapper.ensureInitialized().encodeJson<GalleryImage>(
+      this as GalleryImage,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return GalleryImageMapper.ensureInitialized().encodeMap<GalleryImage>(
+      this as GalleryImage,
+    );
+  }
+
   GalleryImageCopyWith<GalleryImage, GalleryImage, GalleryImage> get copyWith =>
       _GalleryImageCopyWithImpl<GalleryImage, GalleryImage>(
         this as GalleryImage,

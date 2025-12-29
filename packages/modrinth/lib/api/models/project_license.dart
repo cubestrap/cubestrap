@@ -7,7 +7,7 @@ import 'package:dart_mappable/dart_mappable.dart';
 part 'project_license.mapper.dart';
 
 /// The license of the project
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class ProjectLicense with ProjectLicenseMappable {
   const ProjectLicense({
     this.id,
@@ -20,8 +20,6 @@ class ProjectLicense with ProjectLicenseMappable {
 
 
   static ProjectLicense fromJson(Map<String, dynamic> json) => ProjectLicenseMapper.ensureInitialized().decodeMap<ProjectLicense>(json);
-  Map<String, dynamic> toJson() => ProjectLicenseMapper.ensureInitialized().encodeMap<ProjectLicense>(this);
-  Map<String, dynamic> toMap() => ProjectLicenseMapper.ensureInitialized().encodeMap<ProjectLicense>(this);
 
 }
 

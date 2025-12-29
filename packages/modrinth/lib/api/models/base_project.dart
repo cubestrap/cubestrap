@@ -9,7 +9,7 @@ import 'base_project_server_side.dart';
 
 part 'base_project.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class BaseProject with BaseProjectMappable {
   const BaseProject({
     this.slug,
@@ -30,8 +30,6 @@ class BaseProject with BaseProjectMappable {
 
 
   static BaseProject fromJson(Map<String, dynamic> json) => BaseProjectMapper.ensureInitialized().decodeMap<BaseProject>(json);
-  Map<String, dynamic> toJson() => BaseProjectMapper.ensureInitialized().encodeMap<BaseProject>(this);
-  Map<String, dynamic> toMap() => BaseProjectMapper.ensureInitialized().encodeMap<BaseProject>(this);
 
 }
 

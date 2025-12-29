@@ -96,6 +96,18 @@ class BaseProjectMapper extends ClassMapperBase<BaseProject> {
 }
 
 mixin BaseProjectMappable {
+  String toJson() {
+    return BaseProjectMapper.ensureInitialized().encodeJson<BaseProject>(
+      this as BaseProject,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return BaseProjectMapper.ensureInitialized().encodeMap<BaseProject>(
+      this as BaseProject,
+    );
+  }
+
   BaseProjectCopyWith<BaseProject, BaseProject, BaseProject> get copyWith =>
       _BaseProjectCopyWithImpl<BaseProject, BaseProject>(
         this as BaseProject,

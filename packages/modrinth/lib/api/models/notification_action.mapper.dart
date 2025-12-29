@@ -61,6 +61,16 @@ class NotificationActionMapper extends ClassMapperBase<NotificationAction> {
 }
 
 mixin NotificationActionMappable {
+  String toJson() {
+    return NotificationActionMapper.ensureInitialized()
+        .encodeJson<NotificationAction>(this as NotificationAction);
+  }
+
+  Map<String, dynamic> toMap() {
+    return NotificationActionMapper.ensureInitialized()
+        .encodeMap<NotificationAction>(this as NotificationAction);
+  }
+
   NotificationActionCopyWith<
     NotificationAction,
     NotificationAction,

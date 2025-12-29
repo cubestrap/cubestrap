@@ -235,6 +235,16 @@ class CreatableProjectMapper extends ClassMapperBase<CreatableProject> {
 }
 
 mixin CreatableProjectMappable {
+  String toJson() {
+    return CreatableProjectMapper.ensureInitialized()
+        .encodeJson<CreatableProject>(this as CreatableProject);
+  }
+
+  Map<String, dynamic> toMap() {
+    return CreatableProjectMapper.ensureInitialized()
+        .encodeMap<CreatableProject>(this as CreatableProject);
+  }
+
   CreatableProjectCopyWith<CreatableProject, CreatableProject, CreatableProject>
   get copyWith =>
       _CreatableProjectCopyWithImpl<CreatableProject, CreatableProject>(

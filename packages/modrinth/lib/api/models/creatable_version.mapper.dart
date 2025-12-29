@@ -154,6 +154,16 @@ class CreatableVersionMapper extends ClassMapperBase<CreatableVersion> {
 }
 
 mixin CreatableVersionMappable {
+  String toJson() {
+    return CreatableVersionMapper.ensureInitialized()
+        .encodeJson<CreatableVersion>(this as CreatableVersion);
+  }
+
+  Map<String, dynamic> toMap() {
+    return CreatableVersionMapper.ensureInitialized()
+        .encodeMap<CreatableVersion>(this as CreatableVersion);
+  }
+
   CreatableVersionCopyWith<CreatableVersion, CreatableVersion, CreatableVersion>
   get copyWith =>
       _CreatableVersionCopyWithImpl<CreatableVersion, CreatableVersion>(

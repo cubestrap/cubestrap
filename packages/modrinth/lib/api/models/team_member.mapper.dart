@@ -93,6 +93,18 @@ class TeamMemberMapper extends ClassMapperBase<TeamMember> {
 }
 
 mixin TeamMemberMappable {
+  String toJson() {
+    return TeamMemberMapper.ensureInitialized().encodeJson<TeamMember>(
+      this as TeamMember,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return TeamMemberMapper.ensureInitialized().encodeMap<TeamMember>(
+      this as TeamMember,
+    );
+  }
+
   TeamMemberCopyWith<TeamMember, TeamMember, TeamMember> get copyWith =>
       _TeamMemberCopyWithImpl<TeamMember, TeamMember>(
         this as TeamMember,

@@ -6,7 +6,7 @@ import 'package:dart_mappable/dart_mappable.dart';
 
 part 'gallery_image.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class GalleryImage with GalleryImageMappable {
   const GalleryImage({
     required this.url,
@@ -25,8 +25,6 @@ class GalleryImage with GalleryImageMappable {
 
 
   static GalleryImage fromJson(Map<String, dynamic> json) => GalleryImageMapper.ensureInitialized().decodeMap<GalleryImage>(json);
-  Map<String, dynamic> toJson() => GalleryImageMapper.ensureInitialized().encodeMap<GalleryImage>(this);
-  Map<String, dynamic> toMap() => GalleryImageMapper.ensureInitialized().encodeMap<GalleryImage>(this);
 
 }
 

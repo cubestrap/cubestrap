@@ -85,6 +85,18 @@ class UserPayoutDataMapper extends ClassMapperBase<UserPayoutData> {
 }
 
 mixin UserPayoutDataMappable {
+  String toJson() {
+    return UserPayoutDataMapper.ensureInitialized().encodeJson<UserPayoutData>(
+      this as UserPayoutData,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return UserPayoutDataMapper.ensureInitialized().encodeMap<UserPayoutData>(
+      this as UserPayoutData,
+    );
+  }
+
   UserPayoutDataCopyWith<UserPayoutData, UserPayoutData, UserPayoutData>
   get copyWith => _UserPayoutDataCopyWithImpl<UserPayoutData, UserPayoutData>(
     this as UserPayoutData,

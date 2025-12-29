@@ -13,7 +13,7 @@ import '../models/thread_message_body.dart';
 
 part 'threads_manager.g.dart';
 
-@RestApi()
+@RestApi(parser: Parser.DartMappable)
 abstract class ThreadsManager {
   factory ThreadsManager(Dio dio, {String? baseUrl}) = _ThreadsManager;
 

@@ -6,7 +6,7 @@ import 'package:dart_mappable/dart_mappable.dart';
 
 part 'user_identifier.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class UserIdentifier with UserIdentifierMappable {
   const UserIdentifier({
     required this.userId,
@@ -16,8 +16,6 @@ class UserIdentifier with UserIdentifierMappable {
 
 
   static UserIdentifier fromJson(Map<String, dynamic> json) => UserIdentifierMapper.ensureInitialized().decodeMap<UserIdentifier>(json);
-  Map<String, dynamic> toJson() => UserIdentifierMapper.ensureInitialized().encodeMap<UserIdentifier>(this);
-  Map<String, dynamic> toMap() => UserIdentifierMapper.ensureInitialized().encodeMap<UserIdentifier>(this);
 
 }
 

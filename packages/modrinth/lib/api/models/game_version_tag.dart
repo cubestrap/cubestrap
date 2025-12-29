@@ -8,7 +8,7 @@ import 'game_version_tag_version_type.dart';
 
 part 'game_version_tag.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class GameVersionTag with GameVersionTagMappable {
   const GameVersionTag({
     required this.version,
@@ -24,8 +24,6 @@ class GameVersionTag with GameVersionTagMappable {
 
 
   static GameVersionTag fromJson(Map<String, dynamic> json) => GameVersionTagMapper.ensureInitialized().decodeMap<GameVersionTag>(json);
-  Map<String, dynamic> toJson() => GameVersionTagMapper.ensureInitialized().encodeMap<GameVersionTag>(this);
-  Map<String, dynamic> toMap() => GameVersionTagMapper.ensureInitialized().encodeMap<GameVersionTag>(this);
 
 }
 

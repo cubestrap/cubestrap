@@ -9,7 +9,7 @@ import 'notification_type.dart';
 
 part 'notification.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class Notification with NotificationMappable {
   const Notification({
     required this.id,
@@ -35,8 +35,6 @@ class Notification with NotificationMappable {
 
 
   static Notification fromJson(Map<String, dynamic> json) => NotificationMapper.ensureInitialized().decodeMap<Notification>(json);
-  Map<String, dynamic> toJson() => NotificationMapper.ensureInitialized().encodeMap<Notification>(this);
-  Map<String, dynamic> toMap() => NotificationMapper.ensureInitialized().encodeMap<Notification>(this);
 
 }
 

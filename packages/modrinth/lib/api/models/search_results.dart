@@ -8,7 +8,7 @@ import 'project_result.dart';
 
 part 'search_results.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class SearchResults with SearchResultsMappable {
   const SearchResults({
     required this.hits,
@@ -24,8 +24,6 @@ class SearchResults with SearchResultsMappable {
 
 
   static SearchResults fromJson(Map<String, dynamic> json) => SearchResultsMapper.ensureInitialized().decodeMap<SearchResults>(json);
-  Map<String, dynamic> toJson() => SearchResultsMapper.ensureInitialized().encodeMap<SearchResults>(this);
-  Map<String, dynamic> toMap() => SearchResultsMapper.ensureInitialized().encodeMap<SearchResults>(this);
 
 }
 

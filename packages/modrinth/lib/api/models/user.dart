@@ -9,7 +9,7 @@ import 'user_role.dart';
 
 part 'user.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class User with UserMappable {
   const User({
     required this.username,
@@ -53,8 +53,6 @@ class User with UserMappable {
 
 
   static User fromJson(Map<String, dynamic> json) => UserMapper.ensureInitialized().decodeMap<User>(json);
-  Map<String, dynamic> toJson() => UserMapper.ensureInitialized().encodeMap<User>(this);
-  Map<String, dynamic> toMap() => UserMapper.ensureInitialized().encodeMap<User>(this);
 
 }
 

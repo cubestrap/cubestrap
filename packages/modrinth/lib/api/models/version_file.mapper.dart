@@ -84,6 +84,18 @@ class VersionFileMapper extends ClassMapperBase<VersionFile> {
 }
 
 mixin VersionFileMappable {
+  String toJson() {
+    return VersionFileMapper.ensureInitialized().encodeJson<VersionFile>(
+      this as VersionFile,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return VersionFileMapper.ensureInitialized().encodeMap<VersionFile>(
+      this as VersionFile,
+    );
+  }
+
   VersionFileCopyWith<VersionFile, VersionFile, VersionFile> get copyWith =>
       _VersionFileCopyWithImpl<VersionFile, VersionFile>(
         this as VersionFile,

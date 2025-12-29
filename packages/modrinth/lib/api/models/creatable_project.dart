@@ -15,7 +15,7 @@ import 'project_donation_url.dart';
 
 part 'creatable_project.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class CreatableProject with CreatableProjectMappable {
   const CreatableProject({
     required this.projectType,
@@ -79,8 +79,6 @@ class CreatableProject with CreatableProjectMappable {
 
 
   static CreatableProject fromJson(Map<String, dynamic> json) => CreatableProjectMapper.ensureInitialized().decodeMap<CreatableProject>(json);
-  Map<String, dynamic> toJson() => CreatableProjectMapper.ensureInitialized().encodeMap<CreatableProject>(this);
-  Map<String, dynamic> toMap() => CreatableProjectMapper.ensureInitialized().encodeMap<CreatableProject>(this);
 
 }
 

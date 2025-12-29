@@ -14,7 +14,7 @@ import '../models/user_payout_history.dart';
 
 part 'users_manager.g.dart';
 
-@RestApi()
+@RestApi(parser: Parser.DartMappable)
 abstract class UsersManager {
   factory UsersManager(Dio dio, {String? baseUrl}) = _UsersManager;
 

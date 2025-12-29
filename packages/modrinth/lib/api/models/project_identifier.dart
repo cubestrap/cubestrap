@@ -6,7 +6,7 @@ import 'package:dart_mappable/dart_mappable.dart';
 
 part 'project_identifier.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class ProjectIdentifier with ProjectIdentifierMappable {
   const ProjectIdentifier({
     this.id,
@@ -15,8 +15,6 @@ class ProjectIdentifier with ProjectIdentifierMappable {
 
 
   static ProjectIdentifier fromJson(Map<String, dynamic> json) => ProjectIdentifierMapper.ensureInitialized().decodeMap<ProjectIdentifier>(json);
-  Map<String, dynamic> toJson() => ProjectIdentifierMapper.ensureInitialized().encodeMap<ProjectIdentifier>(this);
-  Map<String, dynamic> toMap() => ProjectIdentifierMapper.ensureInitialized().encodeMap<ProjectIdentifier>(this);
 
 }
 

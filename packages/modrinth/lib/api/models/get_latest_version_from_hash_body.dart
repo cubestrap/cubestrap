@@ -6,7 +6,7 @@ import 'package:dart_mappable/dart_mappable.dart';
 
 part 'get_latest_version_from_hash_body.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class GetLatestVersionFromHashBody with GetLatestVersionFromHashBodyMappable {
   const GetLatestVersionFromHashBody({
     required this.loaders,
@@ -18,8 +18,6 @@ class GetLatestVersionFromHashBody with GetLatestVersionFromHashBodyMappable {
 
 
   static GetLatestVersionFromHashBody fromJson(Map<String, dynamic> json) => GetLatestVersionFromHashBodyMapper.ensureInitialized().decodeMap<GetLatestVersionFromHashBody>(json);
-  Map<String, dynamic> toJson() => GetLatestVersionFromHashBodyMapper.ensureInitialized().encodeMap<GetLatestVersionFromHashBody>(this);
-  Map<String, dynamic> toMap() => GetLatestVersionFromHashBodyMapper.ensureInitialized().encodeMap<GetLatestVersionFromHashBody>(this);
 
 }
 

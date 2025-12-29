@@ -69,6 +69,16 @@ class UserPayoutHistoryEntryMapper
 }
 
 mixin UserPayoutHistoryEntryMappable {
+  String toJson() {
+    return UserPayoutHistoryEntryMapper.ensureInitialized()
+        .encodeJson<UserPayoutHistoryEntry>(this as UserPayoutHistoryEntry);
+  }
+
+  Map<String, dynamic> toMap() {
+    return UserPayoutHistoryEntryMapper.ensureInitialized()
+        .encodeMap<UserPayoutHistoryEntry>(this as UserPayoutHistoryEntry);
+  }
+
   UserPayoutHistoryEntryCopyWith<
     UserPayoutHistoryEntry,
     UserPayoutHistoryEntry,

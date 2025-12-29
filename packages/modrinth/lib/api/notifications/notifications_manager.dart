@@ -9,7 +9,7 @@ import '../models/notification.dart';
 
 part 'notifications_manager.g.dart';
 
-@RestApi()
+@RestApi(parser: Parser.DartMappable)
 abstract class NotificationsManager {
   factory NotificationsManager(Dio dio, {String? baseUrl}) = _NotificationsManager;
 

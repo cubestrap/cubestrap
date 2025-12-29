@@ -51,7 +51,7 @@ class _VersionsManager implements VersionsManager {
     late List<Version> _value;
     try {
       _value = _result.data!
-          .map((dynamic i) => Version.fromJson(i as Map<String, dynamic>))
+          .map((dynamic i) => VersionMapper.fromMap(i as Map<String, dynamic>))
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
@@ -84,7 +84,7 @@ class _VersionsManager implements VersionsManager {
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late Version _value;
     try {
-      _value = Version.fromJson(_result.data!);
+      _value = VersionMapper.fromMap(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
@@ -104,7 +104,7 @@ class _VersionsManager implements VersionsManager {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(body?.toJson() ?? <String, dynamic>{});
+    _data.addAll(body?.toMap() ?? <String, dynamic>{});
     final _options = _setStreamType<void>(
       Options(method: 'PATCH', headers: _headers, extra: _extra)
           .compose(
@@ -167,7 +167,7 @@ class _VersionsManager implements VersionsManager {
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late Version _value;
     try {
-      _value = Version.fromJson(_result.data!);
+      _value = VersionMapper.fromMap(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
@@ -205,7 +205,7 @@ class _VersionsManager implements VersionsManager {
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late Version _value;
     try {
-      _value = Version.fromJson(_result.data!);
+      _value = VersionMapper.fromMap(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
@@ -225,7 +225,7 @@ class _VersionsManager implements VersionsManager {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(body?.toJson() ?? <String, dynamic>{});
+    _data.addAll(body?.toMap() ?? <String, dynamic>{});
     final _options = _setStreamType<void>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
@@ -264,7 +264,7 @@ class _VersionsManager implements VersionsManager {
     late List<Version> _value;
     try {
       _value = _result.data!
-          .map((dynamic i) => Version.fromJson(i as Map<String, dynamic>))
+          .map((dynamic i) => VersionMapper.fromMap(i as Map<String, dynamic>))
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);

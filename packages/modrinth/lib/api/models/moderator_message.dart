@@ -7,7 +7,7 @@ import 'package:dart_mappable/dart_mappable.dart';
 part 'moderator_message.mapper.dart';
 
 /// A message that a moderator sent regarding the project
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class ModeratorMessage with ModeratorMessageMappable {
   const ModeratorMessage({
     this.message,
@@ -18,8 +18,6 @@ class ModeratorMessage with ModeratorMessageMappable {
 
 
   static ModeratorMessage fromJson(Map<String, dynamic> json) => ModeratorMessageMapper.ensureInitialized().decodeMap<ModeratorMessage>(json);
-  Map<String, dynamic> toJson() => ModeratorMessageMapper.ensureInitialized().encodeMap<ModeratorMessage>(this);
-  Map<String, dynamic> toMap() => ModeratorMessageMapper.ensureInitialized().encodeMap<ModeratorMessage>(this);
 
 }
 

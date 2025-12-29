@@ -9,7 +9,7 @@ import 'forge_update_checker_promos.dart';
 part 'forge_updates.mapper.dart';
 
 /// Mod version information that can be consumed by Forge's update checker
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class ForgeUpdates with ForgeUpdatesMappable {
   const ForgeUpdates({
     this.homepage,
@@ -20,8 +20,6 @@ class ForgeUpdates with ForgeUpdatesMappable {
 
 
   static ForgeUpdates fromJson(Map<String, dynamic> json) => ForgeUpdatesMapper.ensureInitialized().decodeMap<ForgeUpdates>(json);
-  Map<String, dynamic> toJson() => ForgeUpdatesMapper.ensureInitialized().encodeMap<ForgeUpdates>(this);
-  Map<String, dynamic> toMap() => ForgeUpdatesMapper.ensureInitialized().encodeMap<ForgeUpdates>(this);
 
 }
 

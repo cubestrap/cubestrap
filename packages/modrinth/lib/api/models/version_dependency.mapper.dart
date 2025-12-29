@@ -83,6 +83,16 @@ class VersionDependencyMapper extends ClassMapperBase<VersionDependency> {
 }
 
 mixin VersionDependencyMappable {
+  String toJson() {
+    return VersionDependencyMapper.ensureInitialized()
+        .encodeJson<VersionDependency>(this as VersionDependency);
+  }
+
+  Map<String, dynamic> toMap() {
+    return VersionDependencyMapper.ensureInitialized()
+        .encodeMap<VersionDependency>(this as VersionDependency);
+  }
+
   VersionDependencyCopyWith<
     VersionDependency,
     VersionDependency,

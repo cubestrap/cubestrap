@@ -87,6 +87,14 @@ class ThreadMapper extends ClassMapperBase<Thread> {
 }
 
 mixin ThreadMappable {
+  String toJson() {
+    return ThreadMapper.ensureInitialized().encodeJson<Thread>(this as Thread);
+  }
+
+  Map<String, dynamic> toMap() {
+    return ThreadMapper.ensureInitialized().encodeMap<Thread>(this as Thread);
+  }
+
   ThreadCopyWith<Thread, Thread, Thread> get copyWith =>
       _ThreadCopyWithImpl<Thread, Thread>(this as Thread, $identity, $identity);
   @override

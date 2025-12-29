@@ -60,6 +60,16 @@ class ModeratorMessageMapper extends ClassMapperBase<ModeratorMessage> {
 }
 
 mixin ModeratorMessageMappable {
+  String toJson() {
+    return ModeratorMessageMapper.ensureInitialized()
+        .encodeJson<ModeratorMessage>(this as ModeratorMessage);
+  }
+
+  Map<String, dynamic> toMap() {
+    return ModeratorMessageMapper.ensureInitialized()
+        .encodeMap<ModeratorMessage>(this as ModeratorMessage);
+  }
+
   ModeratorMessageCopyWith<ModeratorMessage, ModeratorMessage, ModeratorMessage>
   get copyWith =>
       _ModeratorMessageCopyWithImpl<ModeratorMessage, ModeratorMessage>(

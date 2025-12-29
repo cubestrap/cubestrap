@@ -6,7 +6,7 @@ import 'package:dart_mappable/dart_mappable.dart';
 
 part 'auth_error.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class AuthError with AuthErrorMappable {
   const AuthError({
     required this.error,
@@ -17,8 +17,6 @@ class AuthError with AuthErrorMappable {
 
 
   static AuthError fromJson(Map<String, dynamic> json) => AuthErrorMapper.ensureInitialized().decodeMap<AuthError>(json);
-  Map<String, dynamic> toJson() => AuthErrorMapper.ensureInitialized().encodeMap<AuthError>(this);
-  Map<String, dynamic> toMap() => AuthErrorMapper.ensureInitialized().encodeMap<AuthError>(this);
 
 }
 

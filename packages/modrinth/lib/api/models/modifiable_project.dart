@@ -12,7 +12,7 @@ import 'project_donation_url.dart';
 
 part 'modifiable_project.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class ModifiableProject with ModifiableProjectMappable {
   const ModifiableProject({
     this.slug,
@@ -64,8 +64,6 @@ class ModifiableProject with ModifiableProjectMappable {
 
 
   static ModifiableProject fromJson(Map<String, dynamic> json) => ModifiableProjectMapper.ensureInitialized().decodeMap<ModifiableProject>(json);
-  Map<String, dynamic> toJson() => ModifiableProjectMapper.ensureInitialized().encodeMap<ModifiableProject>(this);
-  Map<String, dynamic> toMap() => ModifiableProjectMapper.ensureInitialized().encodeMap<ModifiableProject>(this);
 
 }
 

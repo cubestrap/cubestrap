@@ -7,7 +7,7 @@ import 'package:dart_mappable/dart_mappable.dart';
 part 'license.mapper.dart';
 
 /// A full license
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class License with LicenseMappable {
   const License({
     this.title,
@@ -18,8 +18,6 @@ class License with LicenseMappable {
 
 
   static License fromJson(Map<String, dynamic> json) => LicenseMapper.ensureInitialized().decodeMap<License>(json);
-  Map<String, dynamic> toJson() => LicenseMapper.ensureInitialized().encodeMap<License>(this);
-  Map<String, dynamic> toMap() => LicenseMapper.ensureInitialized().encodeMap<License>(this);
 
 }
 

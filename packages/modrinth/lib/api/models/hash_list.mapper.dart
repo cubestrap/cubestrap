@@ -59,6 +59,18 @@ class HashListMapper extends ClassMapperBase<HashList> {
 }
 
 mixin HashListMappable {
+  String toJson() {
+    return HashListMapper.ensureInitialized().encodeJson<HashList>(
+      this as HashList,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return HashListMapper.ensureInitialized().encodeMap<HashList>(
+      this as HashList,
+    );
+  }
+
   HashListCopyWith<HashList, HashList, HashList> get copyWith =>
       _HashListCopyWithImpl<HashList, HashList>(
         this as HashList,

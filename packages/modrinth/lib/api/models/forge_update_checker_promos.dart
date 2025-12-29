@@ -7,7 +7,7 @@ import 'package:dart_mappable/dart_mappable.dart';
 part 'forge_update_checker_promos.mapper.dart';
 
 /// A list of the recommended and latest versions for each Minecraft release
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class ForgeUpdateCheckerPromos with ForgeUpdateCheckerPromosMappable {
   const ForgeUpdateCheckerPromos({
     this.object20,
@@ -20,8 +20,6 @@ class ForgeUpdateCheckerPromos with ForgeUpdateCheckerPromosMappable {
 
 
   static ForgeUpdateCheckerPromos fromJson(Map<String, dynamic> json) => ForgeUpdateCheckerPromosMapper.ensureInitialized().decodeMap<ForgeUpdateCheckerPromos>(json);
-  Map<String, dynamic> toJson() => ForgeUpdateCheckerPromosMapper.ensureInitialized().encodeMap<ForgeUpdateCheckerPromos>(this);
-  Map<String, dynamic> toMap() => ForgeUpdateCheckerPromosMapper.ensureInitialized().encodeMap<ForgeUpdateCheckerPromos>(this);
 
 }
 

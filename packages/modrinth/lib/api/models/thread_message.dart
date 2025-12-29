@@ -8,7 +8,7 @@ import 'thread_message_body.dart';
 
 part 'thread_message.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class ThreadMessage with ThreadMessageMappable {
   const ThreadMessage({
     required this.id,
@@ -24,8 +24,6 @@ class ThreadMessage with ThreadMessageMappable {
 
 
   static ThreadMessage fromJson(Map<String, dynamic> json) => ThreadMessageMapper.ensureInitialized().decodeMap<ThreadMessage>(json);
-  Map<String, dynamic> toJson() => ThreadMessageMapper.ensureInitialized().encodeMap<ThreadMessage>(this);
-  Map<String, dynamic> toMap() => ThreadMessageMapper.ensureInitialized().encodeMap<ThreadMessage>(this);
 
 }
 

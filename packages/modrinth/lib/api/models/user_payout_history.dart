@@ -8,7 +8,7 @@ import 'user_payout_history_entry.dart';
 
 part 'user_payout_history.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class UserPayoutHistory with UserPayoutHistoryMappable {
   const UserPayoutHistory({
     this.allTime,
@@ -23,8 +23,6 @@ class UserPayoutHistory with UserPayoutHistoryMappable {
 
 
   static UserPayoutHistory fromJson(Map<String, dynamic> json) => UserPayoutHistoryMapper.ensureInitialized().decodeMap<UserPayoutHistory>(json);
-  Map<String, dynamic> toJson() => UserPayoutHistoryMapper.ensureInitialized().encodeMap<UserPayoutHistory>(this);
-  Map<String, dynamic> toMap() => UserPayoutHistoryMapper.ensureInitialized().encodeMap<UserPayoutHistory>(this);
 
 }
 

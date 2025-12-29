@@ -6,7 +6,7 @@ import 'package:dart_mappable/dart_mappable.dart';
 
 part 'category_tag.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class CategoryTag with CategoryTagMappable {
   const CategoryTag({
     required this.icon,
@@ -22,8 +22,6 @@ class CategoryTag with CategoryTagMappable {
 
 
   static CategoryTag fromJson(Map<String, dynamic> json) => CategoryTagMapper.ensureInitialized().decodeMap<CategoryTag>(json);
-  Map<String, dynamic> toJson() => CategoryTagMapper.ensureInitialized().encodeMap<CategoryTag>(this);
-  Map<String, dynamic> toMap() => CategoryTagMapper.ensureInitialized().encodeMap<CategoryTag>(this);
 
 }
 

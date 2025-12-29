@@ -6,7 +6,7 @@ import 'package:dart_mappable/dart_mappable.dart';
 
 part 'modify_team_member_body.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class ModifyTeamMemberBody with ModifyTeamMemberBodyMappable {
   const ModifyTeamMemberBody({
     this.role,
@@ -22,8 +22,6 @@ class ModifyTeamMemberBody with ModifyTeamMemberBodyMappable {
 
 
   static ModifyTeamMemberBody fromJson(Map<String, dynamic> json) => ModifyTeamMemberBodyMapper.ensureInitialized().decodeMap<ModifyTeamMemberBody>(json);
-  Map<String, dynamic> toJson() => ModifyTeamMemberBodyMapper.ensureInitialized().encodeMap<ModifyTeamMemberBody>(this);
-  Map<String, dynamic> toMap() => ModifyTeamMemberBodyMapper.ensureInitialized().encodeMap<ModifyTeamMemberBody>(this);
 
 }
 

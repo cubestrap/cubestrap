@@ -64,6 +64,18 @@ class CategoryTagMapper extends ClassMapperBase<CategoryTag> {
 }
 
 mixin CategoryTagMappable {
+  String toJson() {
+    return CategoryTagMapper.ensureInitialized().encodeJson<CategoryTag>(
+      this as CategoryTag,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return CategoryTagMapper.ensureInitialized().encodeMap<CategoryTag>(
+      this as CategoryTag,
+    );
+  }
+
   CategoryTagCopyWith<CategoryTag, CategoryTag, CategoryTag> get copyWith =>
       _CategoryTagCopyWithImpl<CategoryTag, CategoryTag>(
         this as CategoryTag,

@@ -12,7 +12,7 @@ import 'version_file.dart';
 
 part 'version.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class Version with VersionMappable {
   const Version({
     required this.id,
@@ -61,8 +61,6 @@ class Version with VersionMappable {
 
 
   static Version fromJson(Map<String, dynamic> json) => VersionMapper.ensureInitialized().decodeMap<Version>(json);
-  Map<String, dynamic> toJson() => VersionMapper.ensureInitialized().encodeMap<Version>(this);
-  Map<String, dynamic> toMap() => VersionMapper.ensureInitialized().encodeMap<Version>(this);
 
 }
 

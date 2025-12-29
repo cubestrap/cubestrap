@@ -9,7 +9,7 @@ import 'version_file_hashes.dart';
 
 part 'version_file.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class VersionFile with VersionFileMappable {
   const VersionFile({
     required this.hashes,
@@ -29,8 +29,6 @@ class VersionFile with VersionFileMappable {
 
 
   static VersionFile fromJson(Map<String, dynamic> json) => VersionFileMapper.ensureInitialized().decodeMap<VersionFile>(json);
-  Map<String, dynamic> toJson() => VersionFileMapper.ensureInitialized().encodeMap<VersionFile>(this);
-  Map<String, dynamic> toMap() => VersionFileMapper.ensureInitialized().encodeMap<VersionFile>(this);
 
 }
 

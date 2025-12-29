@@ -8,7 +8,7 @@ import 'schedule_requested_status.dart';
 
 part 'schedule.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class Schedule with ScheduleMappable {
   const Schedule({
     required this.time,
@@ -20,8 +20,6 @@ class Schedule with ScheduleMappable {
 
 
   static Schedule fromJson(Map<String, dynamic> json) => ScheduleMapper.ensureInitialized().decodeMap<Schedule>(json);
-  Map<String, dynamic> toJson() => ScheduleMapper.ensureInitialized().encodeMap<Schedule>(this);
-  Map<String, dynamic> toMap() => ScheduleMapper.ensureInitialized().encodeMap<Schedule>(this);
 
 }
 

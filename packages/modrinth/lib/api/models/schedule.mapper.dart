@@ -55,6 +55,18 @@ class ScheduleMapper extends ClassMapperBase<Schedule> {
 }
 
 mixin ScheduleMappable {
+  String toJson() {
+    return ScheduleMapper.ensureInitialized().encodeJson<Schedule>(
+      this as Schedule,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return ScheduleMapper.ensureInitialized().encodeMap<Schedule>(
+      this as Schedule,
+    );
+  }
+
   ScheduleCopyWith<Schedule, Schedule, Schedule> get copyWith =>
       _ScheduleCopyWithImpl<Schedule, Schedule>(
         this as Schedule,

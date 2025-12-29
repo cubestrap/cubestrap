@@ -44,7 +44,10 @@ class _NotificationsManager implements NotificationsManager {
     late List<Notification> _value;
     try {
       _value = _result.data!
-          .map((dynamic i) => Notification.fromJson(i as Map<String, dynamic>))
+          .map(
+            (dynamic i) =>
+                NotificationMapper.fromMap(i as Map<String, dynamic>),
+          )
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
@@ -77,7 +80,7 @@ class _NotificationsManager implements NotificationsManager {
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late Notification _value;
     try {
-      _value = Notification.fromJson(_result.data!);
+      _value = NotificationMapper.fromMap(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
@@ -158,7 +161,10 @@ class _NotificationsManager implements NotificationsManager {
     late List<Notification> _value;
     try {
       _value = _result.data!
-          .map((dynamic i) => Notification.fromJson(i as Map<String, dynamic>))
+          .map(
+            (dynamic i) =>
+                NotificationMapper.fromMap(i as Map<String, dynamic>),
+          )
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);

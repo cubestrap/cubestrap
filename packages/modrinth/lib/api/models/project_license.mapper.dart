@@ -68,6 +68,18 @@ class ProjectLicenseMapper extends ClassMapperBase<ProjectLicense> {
 }
 
 mixin ProjectLicenseMappable {
+  String toJson() {
+    return ProjectLicenseMapper.ensureInitialized().encodeJson<ProjectLicense>(
+      this as ProjectLicense,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return ProjectLicenseMapper.ensureInitialized().encodeMap<ProjectLicense>(
+      this as ProjectLicense,
+    );
+  }
+
   ProjectLicenseCopyWith<ProjectLicense, ProjectLicense, ProjectLicense>
   get copyWith => _ProjectLicenseCopyWithImpl<ProjectLicense, ProjectLicense>(
     this as ProjectLicense,

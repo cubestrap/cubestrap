@@ -14,7 +14,7 @@ import '../models/version.dart';
 
 part 'versions_manager.g.dart';
 
-@RestApi()
+@RestApi(parser: Parser.DartMappable)
 abstract class VersionsManager {
   factory VersionsManager(Dio dio, {String? baseUrl}) = _VersionsManager;
 

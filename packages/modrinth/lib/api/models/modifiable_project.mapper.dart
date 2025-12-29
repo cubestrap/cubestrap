@@ -194,6 +194,16 @@ class ModifiableProjectMapper extends ClassMapperBase<ModifiableProject> {
 }
 
 mixin ModifiableProjectMappable {
+  String toJson() {
+    return ModifiableProjectMapper.ensureInitialized()
+        .encodeJson<ModifiableProject>(this as ModifiableProject);
+  }
+
+  Map<String, dynamic> toMap() {
+    return ModifiableProjectMapper.ensureInitialized()
+        .encodeMap<ModifiableProject>(this as ModifiableProject);
+  }
+
   ModifiableProjectCopyWith<
     ModifiableProject,
     ModifiableProject,

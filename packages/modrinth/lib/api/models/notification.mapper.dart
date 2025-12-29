@@ -96,6 +96,18 @@ class NotificationMapper extends ClassMapperBase<Notification> {
 }
 
 mixin NotificationMappable {
+  String toJson() {
+    return NotificationMapper.ensureInitialized().encodeJson<Notification>(
+      this as Notification,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return NotificationMapper.ensureInitialized().encodeMap<Notification>(
+      this as Notification,
+    );
+  }
+
   NotificationCopyWith<Notification, Notification, Notification> get copyWith =>
       _NotificationCopyWithImpl<Notification, Notification>(
         this as Notification,

@@ -6,7 +6,7 @@ import 'package:dart_mappable/dart_mappable.dart';
 
 part 'donation_platform_tag.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class DonationPlatformTag with DonationPlatformTagMappable {
   const DonationPlatformTag({
     required this.short,
@@ -17,8 +17,6 @@ class DonationPlatformTag with DonationPlatformTagMappable {
 
 
   static DonationPlatformTag fromJson(Map<String, dynamic> json) => DonationPlatformTagMapper.ensureInitialized().decodeMap<DonationPlatformTag>(json);
-  Map<String, dynamic> toJson() => DonationPlatformTagMapper.ensureInitialized().encodeMap<DonationPlatformTag>(this);
-  Map<String, dynamic> toMap() => DonationPlatformTagMapper.ensureInitialized().encodeMap<DonationPlatformTag>(this);
 
 }
 

@@ -84,6 +84,20 @@ class CreatableProjectGalleryItemMapper
 }
 
 mixin CreatableProjectGalleryItemMappable {
+  String toJson() {
+    return CreatableProjectGalleryItemMapper.ensureInitialized()
+        .encodeJson<CreatableProjectGalleryItem>(
+          this as CreatableProjectGalleryItem,
+        );
+  }
+
+  Map<String, dynamic> toMap() {
+    return CreatableProjectGalleryItemMapper.ensureInitialized()
+        .encodeMap<CreatableProjectGalleryItem>(
+          this as CreatableProjectGalleryItem,
+        );
+  }
+
   CreatableProjectGalleryItemCopyWith<
     CreatableProjectGalleryItem,
     CreatableProjectGalleryItem,

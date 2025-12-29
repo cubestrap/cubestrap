@@ -68,6 +68,16 @@ class ProjectDonationUrlMapper extends ClassMapperBase<ProjectDonationUrl> {
 }
 
 mixin ProjectDonationUrlMappable {
+  String toJson() {
+    return ProjectDonationUrlMapper.ensureInitialized()
+        .encodeJson<ProjectDonationUrl>(this as ProjectDonationUrl);
+  }
+
+  Map<String, dynamic> toMap() {
+    return ProjectDonationUrlMapper.ensureInitialized()
+        .encodeMap<ProjectDonationUrl>(this as ProjectDonationUrl);
+  }
+
   ProjectDonationUrlCopyWith<
     ProjectDonationUrl,
     ProjectDonationUrl,

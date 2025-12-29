@@ -6,7 +6,7 @@ import 'package:dart_mappable/dart_mappable.dart';
 
 part 'invalid_input_error.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class InvalidInputError with InvalidInputErrorMappable {
   const InvalidInputError({
     required this.error,
@@ -17,8 +17,6 @@ class InvalidInputError with InvalidInputErrorMappable {
 
 
   static InvalidInputError fromJson(Map<String, dynamic> json) => InvalidInputErrorMapper.ensureInitialized().decodeMap<InvalidInputError>(json);
-  Map<String, dynamic> toJson() => InvalidInputErrorMapper.ensureInitialized().encodeMap<InvalidInputError>(this);
-  Map<String, dynamic> toMap() => InvalidInputErrorMapper.ensureInitialized().encodeMap<InvalidInputError>(this);
 
 }
 

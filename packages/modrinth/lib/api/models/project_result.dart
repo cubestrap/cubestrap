@@ -11,7 +11,7 @@ import 'server_rendered_project_project_type.dart';
 
 part 'project_result.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class ProjectResult with ProjectResultMappable {
   const ProjectResult({
     required this.projectType,
@@ -76,8 +76,6 @@ class ProjectResult with ProjectResultMappable {
 
 
   static ProjectResult fromJson(Map<String, dynamic> json) => ProjectResultMapper.ensureInitialized().decodeMap<ProjectResult>(json);
-  Map<String, dynamic> toJson() => ProjectResultMapper.ensureInitialized().encodeMap<ProjectResult>(this);
-  Map<String, dynamic> toMap() => ProjectResultMapper.ensureInitialized().encodeMap<ProjectResult>(this);
 
 }
 

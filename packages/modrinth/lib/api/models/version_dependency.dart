@@ -8,7 +8,7 @@ import 'version_dependency_dependency_type.dart';
 
 part 'version_dependency.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class VersionDependency with VersionDependencyMappable {
   const VersionDependency({
     required this.dependencyType,
@@ -27,8 +27,6 @@ class VersionDependency with VersionDependencyMappable {
 
 
   static VersionDependency fromJson(Map<String, dynamic> json) => VersionDependencyMapper.ensureInitialized().decodeMap<VersionDependency>(json);
-  Map<String, dynamic> toJson() => VersionDependencyMapper.ensureInitialized().encodeMap<VersionDependency>(this);
-  Map<String, dynamic> toMap() => VersionDependencyMapper.ensureInitialized().encodeMap<VersionDependency>(this);
 
 }
 

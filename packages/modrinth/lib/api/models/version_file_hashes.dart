@@ -7,7 +7,7 @@ import 'package:dart_mappable/dart_mappable.dart';
 part 'version_file_hashes.mapper.dart';
 
 /// A map of hashes of the file. The key is the hashing algorithm and the value is the string version of the hash.
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class VersionFileHashes with VersionFileHashesMappable {
   const VersionFileHashes({
     this.sha512,
@@ -18,8 +18,6 @@ class VersionFileHashes with VersionFileHashesMappable {
 
 
   static VersionFileHashes fromJson(Map<String, dynamic> json) => VersionFileHashesMapper.ensureInitialized().decodeMap<VersionFileHashes>(json);
-  Map<String, dynamic> toJson() => VersionFileHashesMapper.ensureInitialized().encodeMap<VersionFileHashes>(this);
-  Map<String, dynamic> toMap() => VersionFileHashesMapper.ensureInitialized().encodeMap<VersionFileHashes>(this);
 
 }
 

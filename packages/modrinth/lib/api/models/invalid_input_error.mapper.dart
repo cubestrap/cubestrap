@@ -58,6 +58,16 @@ class InvalidInputErrorMapper extends ClassMapperBase<InvalidInputError> {
 }
 
 mixin InvalidInputErrorMappable {
+  String toJson() {
+    return InvalidInputErrorMapper.ensureInitialized()
+        .encodeJson<InvalidInputError>(this as InvalidInputError);
+  }
+
+  Map<String, dynamic> toMap() {
+    return InvalidInputErrorMapper.ensureInitialized()
+        .encodeMap<InvalidInputError>(this as InvalidInputError);
+  }
+
   InvalidInputErrorCopyWith<
     InvalidInputError,
     InvalidInputError,

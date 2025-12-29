@@ -61,6 +61,18 @@ class LoaderTagMapper extends ClassMapperBase<LoaderTag> {
 }
 
 mixin LoaderTagMappable {
+  String toJson() {
+    return LoaderTagMapper.ensureInitialized().encodeJson<LoaderTag>(
+      this as LoaderTag,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return LoaderTagMapper.ensureInitialized().encodeMap<LoaderTag>(
+      this as LoaderTag,
+    );
+  }
+
   LoaderTagCopyWith<LoaderTag, LoaderTag, LoaderTag> get copyWith =>
       _LoaderTagCopyWithImpl<LoaderTag, LoaderTag>(
         this as LoaderTag,

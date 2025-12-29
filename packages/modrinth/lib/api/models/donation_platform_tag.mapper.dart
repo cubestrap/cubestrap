@@ -58,6 +58,16 @@ class DonationPlatformTagMapper extends ClassMapperBase<DonationPlatformTag> {
 }
 
 mixin DonationPlatformTagMappable {
+  String toJson() {
+    return DonationPlatformTagMapper.ensureInitialized()
+        .encodeJson<DonationPlatformTag>(this as DonationPlatformTag);
+  }
+
+  Map<String, dynamic> toMap() {
+    return DonationPlatformTagMapper.ensureInitialized()
+        .encodeMap<DonationPlatformTag>(this as DonationPlatformTag);
+  }
+
   DonationPlatformTagCopyWith<
     DonationPlatformTag,
     DonationPlatformTag,

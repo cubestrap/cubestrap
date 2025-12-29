@@ -69,6 +69,16 @@ class UserPayoutHistoryMapper extends ClassMapperBase<UserPayoutHistory> {
 }
 
 mixin UserPayoutHistoryMappable {
+  String toJson() {
+    return UserPayoutHistoryMapper.ensureInitialized()
+        .encodeJson<UserPayoutHistory>(this as UserPayoutHistory);
+  }
+
+  Map<String, dynamic> toMap() {
+    return UserPayoutHistoryMapper.ensureInitialized()
+        .encodeMap<UserPayoutHistory>(this as UserPayoutHistory);
+  }
+
   UserPayoutHistoryCopyWith<
     UserPayoutHistory,
     UserPayoutHistory,

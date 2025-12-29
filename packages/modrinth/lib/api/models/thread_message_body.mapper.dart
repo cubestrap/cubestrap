@@ -91,6 +91,16 @@ class ThreadMessageBodyMapper extends ClassMapperBase<ThreadMessageBody> {
 }
 
 mixin ThreadMessageBodyMappable {
+  String toJson() {
+    return ThreadMessageBodyMapper.ensureInitialized()
+        .encodeJson<ThreadMessageBody>(this as ThreadMessageBody);
+  }
+
+  Map<String, dynamic> toMap() {
+    return ThreadMessageBodyMapper.ensureInitialized()
+        .encodeMap<ThreadMessageBody>(this as ThreadMessageBody);
+  }
+
   ThreadMessageBodyCopyWith<
     ThreadMessageBody,
     ThreadMessageBody,

@@ -29,7 +29,7 @@ class _VersionFilesManager implements VersionFilesManager {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
     final queryParameters = <String, dynamic>{
-      r'algorithm': algorithm,
+      r'algorithm': algorithm.toValue(),
       r'multiple': multiple,
     };
     queryParameters.removeWhere((k, v) => v == null);
@@ -48,7 +48,7 @@ class _VersionFilesManager implements VersionFilesManager {
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late Version _value;
     try {
-      _value = Version.fromJson(_result.data!);
+      _value = VersionMapper.fromMap(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
@@ -66,7 +66,7 @@ class _VersionFilesManager implements VersionFilesManager {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
     final queryParameters = <String, dynamic>{
-      r'algorithm': algorithm,
+      r'algorithm': algorithm.toValue(),
       r'version_id': versionId,
     };
     queryParameters.removeWhere((k, v) => v == null);
@@ -94,11 +94,13 @@ class _VersionFilesManager implements VersionFilesManager {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{r'algorithm': algorithm};
+    final queryParameters = <String, dynamic>{
+      r'algorithm': algorithm.toValue(),
+    };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(body?.toJson() ?? <String, dynamic>{});
+    _data.addAll(body?.toMap() ?? <String, dynamic>{});
     final _options = _setStreamType<Version>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
@@ -112,7 +114,7 @@ class _VersionFilesManager implements VersionFilesManager {
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late Version _value;
     try {
-      _value = Version.fromJson(_result.data!);
+      _value = VersionMapper.fromMap(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
@@ -131,7 +133,7 @@ class _VersionFilesManager implements VersionFilesManager {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(body?.toJson() ?? <String, dynamic>{});
+    _data.addAll(body?.toMap() ?? <String, dynamic>{});
     final _options = _setStreamType<Map<String, Version>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
@@ -147,7 +149,7 @@ class _VersionFilesManager implements VersionFilesManager {
     try {
       _value = _result.data!.map(
         (k, dynamic v) =>
-            MapEntry(k, Version.fromJson(v as Map<String, dynamic>)),
+            MapEntry(k, VersionMapper.fromMap(v as Map<String, dynamic>)),
       );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
@@ -167,7 +169,7 @@ class _VersionFilesManager implements VersionFilesManager {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(body?.toJson() ?? <String, dynamic>{});
+    _data.addAll(body?.toMap() ?? <String, dynamic>{});
     final _options = _setStreamType<Map<String, Version>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
@@ -183,7 +185,7 @@ class _VersionFilesManager implements VersionFilesManager {
     try {
       _value = _result.data!.map(
         (k, dynamic v) =>
-            MapEntry(k, Version.fromJson(v as Map<String, dynamic>)),
+            MapEntry(k, VersionMapper.fromMap(v as Map<String, dynamic>)),
       );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);

@@ -11,7 +11,7 @@ import 'version_dependency.dart';
 
 part 'base_version.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class BaseVersion with BaseVersionMappable {
   const BaseVersion({
     this.name,
@@ -42,8 +42,6 @@ class BaseVersion with BaseVersionMappable {
 
 
   static BaseVersion fromJson(Map<String, dynamic> json) => BaseVersionMapper.ensureInitialized().decodeMap<BaseVersion>(json);
-  Map<String, dynamic> toJson() => BaseVersionMapper.ensureInitialized().encodeMap<BaseVersion>(this);
-  Map<String, dynamic> toMap() => BaseVersionMapper.ensureInitialized().encodeMap<BaseVersion>(this);
 
 }
 

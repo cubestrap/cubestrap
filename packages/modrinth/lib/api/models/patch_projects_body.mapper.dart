@@ -175,6 +175,16 @@ class PatchProjectsBodyMapper extends ClassMapperBase<PatchProjectsBody> {
 }
 
 mixin PatchProjectsBodyMappable {
+  String toJson() {
+    return PatchProjectsBodyMapper.ensureInitialized()
+        .encodeJson<PatchProjectsBody>(this as PatchProjectsBody);
+  }
+
+  Map<String, dynamic> toMap() {
+    return PatchProjectsBodyMapper.ensureInitialized()
+        .encodeMap<PatchProjectsBody>(this as PatchProjectsBody);
+  }
+
   PatchProjectsBodyCopyWith<
     PatchProjectsBody,
     PatchProjectsBody,

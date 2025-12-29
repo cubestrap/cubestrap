@@ -41,7 +41,9 @@ class _TagsManager implements TagsManager {
     late List<CategoryTag> _value;
     try {
       _value = _result.data!
-          .map((dynamic i) => CategoryTag.fromJson(i as Map<String, dynamic>))
+          .map(
+            (dynamic i) => CategoryTagMapper.fromMap(i as Map<String, dynamic>),
+          )
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
@@ -72,7 +74,9 @@ class _TagsManager implements TagsManager {
     late List<LoaderTag> _value;
     try {
       _value = _result.data!
-          .map((dynamic i) => LoaderTag.fromJson(i as Map<String, dynamic>))
+          .map(
+            (dynamic i) => LoaderTagMapper.fromMap(i as Map<String, dynamic>),
+          )
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
@@ -106,7 +110,8 @@ class _TagsManager implements TagsManager {
     try {
       _value = _result.data!
           .map(
-            (dynamic i) => GameVersionTag.fromJson(i as Map<String, dynamic>),
+            (dynamic i) =>
+                GameVersionTagMapper.fromMap(i as Map<String, dynamic>),
           )
           .toList();
     } on Object catch (e, s) {
@@ -138,7 +143,9 @@ class _TagsManager implements TagsManager {
     late List<LicenseTag> _value;
     try {
       _value = _result.data!
-          .map((dynamic i) => LicenseTag.fromJson(i as Map<String, dynamic>))
+          .map(
+            (dynamic i) => LicenseTagMapper.fromMap(i as Map<String, dynamic>),
+          )
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
@@ -171,7 +178,7 @@ class _TagsManager implements TagsManager {
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late License _value;
     try {
-      _value = License.fromJson(_result.data!);
+      _value = LicenseMapper.fromMap(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
@@ -205,7 +212,7 @@ class _TagsManager implements TagsManager {
       _value = _result.data!
           .map(
             (dynamic i) =>
-                DonationPlatformTag.fromJson(i as Map<String, dynamic>),
+                DonationPlatformTagMapper.fromMap(i as Map<String, dynamic>),
           )
           .toList();
     } on Object catch (e, s) {

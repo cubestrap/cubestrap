@@ -8,7 +8,7 @@ import 'user.dart';
 
 part 'team_member.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class TeamMember with TeamMemberMappable {
   const TeamMember({
     required this.teamId,
@@ -31,8 +31,6 @@ class TeamMember with TeamMemberMappable {
 
 
   static TeamMember fromJson(Map<String, dynamic> json) => TeamMemberMapper.ensureInitialized().decodeMap<TeamMember>(json);
-  Map<String, dynamic> toJson() => TeamMemberMapper.ensureInitialized().encodeMap<TeamMember>(this);
-  Map<String, dynamic> toMap() => TeamMemberMapper.ensureInitialized().encodeMap<TeamMember>(this);
 
 }
 

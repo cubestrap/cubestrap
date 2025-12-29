@@ -9,7 +9,7 @@ import 'version.dart';
 
 part 'project_dependency_list.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class ProjectDependencyList with ProjectDependencyListMappable {
   const ProjectDependencyList({
     this.projects,
@@ -20,8 +20,6 @@ class ProjectDependencyList with ProjectDependencyListMappable {
 
 
   static ProjectDependencyList fromJson(Map<String, dynamic> json) => ProjectDependencyListMapper.ensureInitialized().decodeMap<ProjectDependencyList>(json);
-  Map<String, dynamic> toJson() => ProjectDependencyListMapper.ensureInitialized().encodeMap<ProjectDependencyList>(this);
-  Map<String, dynamic> toMap() => ProjectDependencyListMapper.ensureInitialized().encodeMap<ProjectDependencyList>(this);
 
 }
 

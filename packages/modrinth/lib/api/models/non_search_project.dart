@@ -12,7 +12,7 @@ import 'project_donation_url.dart';
 
 part 'non_search_project.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode | GenerateMethods.stringify | GenerateMethods.equals | GenerateMethods.copy)
+@MappableClass()
 class NonSearchProject with NonSearchProjectMappable {
   const NonSearchProject({
     this.slug,
@@ -58,8 +58,6 @@ class NonSearchProject with NonSearchProjectMappable {
 
 
   static NonSearchProject fromJson(Map<String, dynamic> json) => NonSearchProjectMapper.ensureInitialized().decodeMap<NonSearchProject>(json);
-  Map<String, dynamic> toJson() => NonSearchProjectMapper.ensureInitialized().encodeMap<NonSearchProject>(this);
-  Map<String, dynamic> toMap() => NonSearchProjectMapper.ensureInitialized().encodeMap<NonSearchProject>(this);
 
 }
 

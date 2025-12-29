@@ -30,7 +30,7 @@ class _ThreadsManager implements ThreadsManager {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(body?.toJson() ?? <String, dynamic>{});
+    _data.addAll(body?.toMap() ?? <String, dynamic>{});
     final _options = _setStreamType<Report>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
@@ -44,7 +44,7 @@ class _ThreadsManager implements ThreadsManager {
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late Report _value;
     try {
-      _value = Report.fromJson(_result.data!);
+      _value = ReportMapper.fromMap(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
@@ -77,7 +77,7 @@ class _ThreadsManager implements ThreadsManager {
     late List<Report> _value;
     try {
       _value = _result.data!
-          .map((dynamic i) => Report.fromJson(i as Map<String, dynamic>))
+          .map((dynamic i) => ReportMapper.fromMap(i as Map<String, dynamic>))
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
@@ -110,7 +110,7 @@ class _ThreadsManager implements ThreadsManager {
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late Report _value;
     try {
-      _value = Report.fromJson(_result.data!);
+      _value = ReportMapper.fromMap(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
@@ -130,7 +130,7 @@ class _ThreadsManager implements ThreadsManager {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(body?.toJson() ?? <String, dynamic>{});
+    _data.addAll(body?.toMap() ?? <String, dynamic>{});
     final _options = _setStreamType<void>(
       Options(method: 'PATCH', headers: _headers, extra: _extra)
           .compose(
@@ -169,7 +169,7 @@ class _ThreadsManager implements ThreadsManager {
     late List<Report> _value;
     try {
       _value = _result.data!
-          .map((dynamic i) => Report.fromJson(i as Map<String, dynamic>))
+          .map((dynamic i) => ReportMapper.fromMap(i as Map<String, dynamic>))
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
@@ -202,7 +202,7 @@ class _ThreadsManager implements ThreadsManager {
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late Thread _value;
     try {
-      _value = Thread.fromJson(_result.data!);
+      _value = ThreadMapper.fromMap(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
@@ -222,7 +222,7 @@ class _ThreadsManager implements ThreadsManager {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(body?.toJson() ?? <String, dynamic>{});
+    _data.addAll(body?.toMap() ?? <String, dynamic>{});
     final _options = _setStreamType<Thread>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
@@ -236,7 +236,7 @@ class _ThreadsManager implements ThreadsManager {
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late Thread _value;
     try {
-      _value = Thread.fromJson(_result.data!);
+      _value = ThreadMapper.fromMap(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
@@ -269,7 +269,7 @@ class _ThreadsManager implements ThreadsManager {
     late List<Thread> _value;
     try {
       _value = _result.data!
-          .map((dynamic i) => Thread.fromJson(i as Map<String, dynamic>))
+          .map((dynamic i) => ThreadMapper.fromMap(i as Map<String, dynamic>))
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);

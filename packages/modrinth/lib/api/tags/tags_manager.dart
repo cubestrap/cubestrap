@@ -14,7 +14,7 @@ import '../models/loader_tag.dart';
 
 part 'tags_manager.g.dart';
 
-@RestApi()
+@RestApi(parser: Parser.DartMappable)
 abstract class TagsManager {
   factory TagsManager(Dio dio, {String? baseUrl}) = _TagsManager;
 
