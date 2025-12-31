@@ -20,9 +20,9 @@ class GamepadService {
           }
         } else if (event.key == "7") {
           if (event.value > 0) {
-            direction = .up;
-          } else {
             direction = .down;
+          } else {
+            direction = .up;
           }
         }
 

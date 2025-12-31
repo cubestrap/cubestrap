@@ -12,16 +12,18 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverList.list(
-            children: [
-              FocusTraversalGroup(
-                child: SizedBox(height: 300, child: RecentInstances()),
-              ),
-            ],
-          ),
-        ],
+      body: FocusTraversalGroup(
+        child: CustomScrollView(
+          slivers: [
+            SliverList.list(
+              children: [
+                FocusTraversalGroup(
+                  child: SizedBox(height: 300, child: RecentInstances()),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

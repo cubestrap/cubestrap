@@ -1,4 +1,5 @@
 import 'package:cubeapi/cubeapi.dart';
+import 'package:cubestrap/shared/components/card/image_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -20,7 +21,6 @@ class _InstanceCardState extends ConsumerState<InstanceCard> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Actions(
       actions: <Type, Action<Intent>>{
         ActivateIntent: CallbackAction<ActivateIntent>(
@@ -43,31 +43,10 @@ class _InstanceCardState extends ConsumerState<InstanceCard> {
           });
         },
 
-        child: Container(
-          decoration: BoxDecoration(
-            color: theme.colorScheme.surfaceContainer,
-            borderRadius: .circular(12),
-            border: .all(
-              width: 3,
-              color: _focused ? theme.colorScheme.primary : Colors.transparent,
-            ),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Column(
-              crossAxisAlignment: .start,
-              children: [
-                Spacer(),
-                Text(widget.instance.name, style: theme.textTheme.titleMedium),
-                Text(
-                  "No playtime",
-                  style: theme.textTheme.labelMedium!.copyWith(
-                    color: theme.colorScheme.onSurfaceVariant,
-                  ),
-                ),
-              ],
-            ),
-          ),
+        child: ImageCard(
+          title: Text(widget.instance.name),
+          description: Text("No Playtime"),
+          focused: _focused,
         ),
       ),
     );
