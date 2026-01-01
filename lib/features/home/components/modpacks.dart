@@ -71,6 +71,7 @@ class _ModpacksListState extends ConsumerState<ModpacksList> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.sizeOf(context).width;
     return PagingListener(
       controller: _pagingController,
       builder: (context, state, fetchNextPage) =>
@@ -78,7 +79,10 @@ class _ModpacksListState extends ConsumerState<ModpacksList> {
             state: state,
             fetchNextPage: fetchNextPage,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 4,
+              crossAxisCount: (width / 300).floor().clamp(1, 20),
+              mainAxisExtent: 200,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
             ),
             builderDelegate: PagedChildBuilderDelegate(
               itemBuilder: (context, item, index) {
