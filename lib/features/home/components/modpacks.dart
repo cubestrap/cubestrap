@@ -81,8 +81,8 @@ class _ModpacksListState extends ConsumerState<ModpacksList> {
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: (width / 300).floor().clamp(1, 20),
               mainAxisExtent: 200,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
+              crossAxisSpacing: 6,
+              mainAxisSpacing: 6,
             ),
             builderDelegate: PagedChildBuilderDelegate(
               itemBuilder: (context, item, index) {
