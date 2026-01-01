@@ -1,3 +1,4 @@
+import 'package:cubestrap/features/modrinth/components/modpack_card.dart';
 import 'package:cubestrap/features/modrinth/providers/modpacks.dart';
 import 'package:cubestrap/shared/components/card/image_card.dart';
 import 'package:flutter/material.dart';
@@ -86,18 +87,7 @@ class _ModpacksListState extends ConsumerState<ModpacksList> {
             ),
             builderDelegate: PagedChildBuilderDelegate(
               itemBuilder: (context, item, index) {
-                return ImageCard(
-                  title: Text(item.title ?? "no title"),
-                  image: SizedBox(
-                    width: double.infinity,
-                    height: double.infinity,
-                    child: Image.network(
-                      item.iconUrl!,
-                      width: double.infinity,
-                      height: double.infinity,
-                    ),
-                  ),
-                );
+                return ProjectCard(project: item);
               },
             ),
           ),

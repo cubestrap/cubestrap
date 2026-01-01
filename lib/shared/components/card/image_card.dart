@@ -17,7 +17,7 @@ class ImageCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return ClipRRect(
-      borderRadius: .circular(12),
+      borderRadius: .circular(16),
 
       child: Stack(
         children: [
@@ -34,9 +34,16 @@ class ImageCard extends StatelessWidget {
           ),
           Positioned.fill(
             child: Container(
-              decoration: BoxDecoration(),
+              decoration: BoxDecoration(
+                // has to be diff because of math or smth
+                borderRadius: .circular(16),
+                border: focused
+                    ? Border.all(width: 3, color: theme.colorScheme.primary)
+                    // so it doesn't bump the content
+                    : Border.all(width: 3, color: Colors.transparent),
+              ),
               child: Padding(
-                padding: const EdgeInsets.all(12.0),
+                padding: const EdgeInsets.all(16.0),
                 child: Column(
                   crossAxisAlignment: .start,
 
