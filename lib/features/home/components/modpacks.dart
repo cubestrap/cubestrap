@@ -75,6 +75,7 @@ class _ModpacksListState extends ConsumerState<ModpacksList> {
     return PagingListener(
       controller: _pagingController,
       builder: (context, state, fetchNextPage) => FocusTraversalGroup(
+        policy: WidgetOrderTraversalPolicy(),
         child: PagedGridView<int, ProjectResult>(
           state: state,
           fetchNextPage: fetchNextPage,

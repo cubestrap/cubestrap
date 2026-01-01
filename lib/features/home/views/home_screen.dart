@@ -27,25 +27,43 @@ class _HomeScreenState extends State<HomeScreen>
         child: NestedScrollView(
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return [
-              SliverToBoxAdapter(
-                child: FocusTraversalGroup(
-                  child: SizedBox(height: 300, child: RecentInstances()),
-                ),
-              ),
-              SliverPersistentHeader(
-                pinned: true,
-                delegate: _SliverAppBarDelegate(
-                  child: ExcludeFocus(
-                    child: Center(
-                      child: Container(
-                        color: Theme.of(context).scaffoldBackgroundColor,
-                        width: 500,
-                        child: SegmentedBar(tabController: _tabController),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              // SliverToBoxAdapter(
+              //   child: FocusTraversalGroup(
+              //     child: Column(
+              //       children: [
+              //         SizedBox(height: 300, child: RecentInstances()),
+              //         Container(
+              //           color: Theme.of(context).scaffoldBackgroundColor,
+              //           width: 500,
+              //           child: SegmentedBar(tabController: _tabController),
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
+              // SliverPersistentHeader(
+              //   pinned: true,
+              //   delegate: _SliverAppBarDelegate(
+              //     child: ExcludeFocus(
+              //       child: Center(
+              //         child: Container(
+              //           color: Theme.of(context).scaffoldBackgroundColor,
+              //           width: 500,
+              //           child: SegmentedBar(tabController: _tabController),
+              //         ),
+              //       ),
+              //     ),
+              //   ),
+              // // ),
+              // SliverToBoxAdapter(
+              //   child: Center(
+              //     child: Container(
+              //       color: Theme.of(context).scaffoldBackgroundColor,
+              //       width: 500,
+              //       child: SegmentedBar(tabController: _tabController),
+              //     ),
+              //   ),
+              // ),
             ];
           },
           body: ModpacksSection(tabController: _tabController),
