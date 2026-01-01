@@ -38,10 +38,12 @@ class _HomeScreenState extends State<HomeScreen>
                     ),
                   ),
                 ),
-                FocusTraversalGroup(
-                  child: ModpacksSection(tabController: _tabController),
-                ),
               ],
+            ),
+            SliverFillRemaining(
+              child: FocusTraversalGroup(
+                child: ModpacksSection(tabController: _tabController),
+              ),
             ),
           ],
         ),

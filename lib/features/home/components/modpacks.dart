@@ -18,12 +18,43 @@ class _ModpacksSectionState extends ConsumerState<ModpacksSection> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
-    return SizedBox(
-      width: size.width,
-      height: size.height - 50,
-      child: TabBarView(
+    return NestedScrollView(
+      headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+        return <Widget>[
+          SliverAppBar(
+            title: const Text('Sliver TabBarView'),
+            pinned: true,
+            floating: true,
+            expandedHeight: 200.0,
+            forceElevated: innerBoxIsScrolled,
+            flexibleSpace: const FlexibleSpaceBar(background: FlutterLogo()),
+
+            bottom: TabBar(
+              controller: widget.tabController,
+              tabs: [
+                Tab(icon: Icon(Icons.info), text: "Details"),
+                Tab(icon: Icon(Icons.list), text: "List"),
+                Tab(icon: Icon(Icons.list), text: "ur mom"),
+              ],
+            ),
+          ),
+        ];
+      },
+      body: TabBarView(
         controller: widget.tabController,
-        children: [ModpacksList(), Text("dos"), Text("tres")],
+        children: [
+          // Tab 1: Simple Content
+          const Center(child: Text("Details Page Content")),
+
+          // Tab 2: A Scrollable List
+          ListView.builder(
+            padding: const EdgeInsets.all(8.0),
+            itemCount: 30,
+            itemBuilder: (context, index) =>
+                ListTile(title: Text("Item $index")),
+          ),
+          Text("treeees"),
+        ],
       ),
     );
   }
