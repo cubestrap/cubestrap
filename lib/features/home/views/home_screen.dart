@@ -13,6 +13,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   late final TabController _tabController;
+
   @override
   void initState() {
     super.initState();
@@ -23,31 +24,55 @@ class _HomeScreenState extends State<HomeScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       body: FocusTraversalGroup(
-        child: CustomScrollView(
-          slivers: [
-            SliverList.list(
-              children: [
-                FocusTraversalGroup(
+        child: NestedScrollView(
+          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+            return [
+              SliverToBoxAdapter(
+                child: FocusTraversalGroup(
                   child: SizedBox(height: 300, child: RecentInstances()),
                 ),
-                FocusTraversalGroup(
-                  child: Center(
-                    child: SizedBox(
-                      width: 500,
-                      child: SegmentedBar(tabController: _tabController),
+              ),
+              SliverPersistentHeader(
+                pinned: true,
+                delegate: _SliverAppBarDelegate(
+                  child: FocusTraversalGroup(
+                    child: Center(
+                      child: Container(
+                        color: Theme.of(context).scaffoldBackgroundColor,
+                        width: 500,
+                        child: SegmentedBar(tabController: _tabController),
+                      ),
                     ),
                   ),
                 ),
-              ],
-            ),
-            SliverFillRemaining(
-              child: FocusTraversalGroup(
-                child: ModpacksSection(tabController: _tabController),
               ),
-            ),
-          ],
+            ];
+          },
+          body: ModpacksSection(tabController: _tabController),
         ),
       ),
     );
   }
+}
+
+class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
+  final Widget child;
+  _SliverAppBarDelegate({required this.child});
+
+  @override
+  double get minExtent => 60.0;
+  @override
+  double get maxExtent => 60.0;
+
+  @override
+  Widget build(
+    BuildContext context,
+    double shrinkOffset,
+    bool overlapsContent,
+  ) {
+    return child;
+  }
+
+  @override
+  bool shouldRebuild(_SliverAppBarDelegate oldDelegate) => false;
 }

@@ -8,7 +8,13 @@ part 'modpacks.g.dart';
 class ModrinthModpacks extends _$ModrinthModpacks {
   @override
   Future<SearchResults> build({required int page}) async {
-    final results = await modrinthClient.projects.searchProjects(offset: page);
+    final limit = 20;
+    final offset = (page - 1) * limit;
+    print("offset = $offset");
+    final results = await modrinthClient.projects.searchProjects(
+      offset: offset,
+      limit: limit,
+    );
     return results;
   }
 }

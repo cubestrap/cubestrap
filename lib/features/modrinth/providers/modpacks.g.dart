@@ -50,7 +50,7 @@ final class ModrinthModpacksProvider
   }
 }
 
-String _$modrinthModpacksHash() => r'89edfacb68676558f280719e2040871c6ba011bc';
+String _$modrinthModpacksHash() => r'7d608314ca0129c44b537d501a90371f02e68049';
 
 final class ModrinthModpacksFamily extends $Family
     with
