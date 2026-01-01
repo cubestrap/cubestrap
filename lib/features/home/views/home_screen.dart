@@ -38,9 +38,7 @@ class _HomeScreenState extends State<HomeScreen>
                     ),
                   ),
                 ),
-
-                SizedBox(
-                  height: 500,
+                FocusTraversalGroup(
                   child: ModpacksSection(tabController: _tabController),
                 ),
               ],

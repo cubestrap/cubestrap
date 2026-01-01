@@ -1,5 +1,9 @@
+import 'package:cubestrap/features/modrinth/providers/modpacks.dart';
+import 'package:cubestrap/shared/components/card/image_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:modrinth/api/export.dart';
 
 class ModpacksSection extends ConsumerStatefulWidget {
   final TabController tabController;
@@ -13,13 +17,71 @@ class ModpacksSection extends ConsumerStatefulWidget {
 class _ModpacksSectionState extends ConsumerState<ModpacksSection> {
   @override
   Widget build(BuildContext context) {
-    return TabBarView(
-      controller: widget.tabController,
-      children: [
-        Container(width: 500, height: 500, color: Colors.amber),
-        Text("dos"),
-        Text("tres"),
-      ],
+    final size = MediaQuery.sizeOf(context);
+    return SizedBox(
+      width: size.width,
+      height: size.height - 50,
+      child: TabBarView(
+        controller: widget.tabController,
+        children: [ModpacksList(), Text("dos"), Text("tres")],
+      ),
+    );
+  }
+}
+
+class ModpacksList extends ConsumerStatefulWidget {
+  const ModpacksList({super.key});
+
+  @override
+  ConsumerState<ConsumerStatefulWidget> createState() => _ModpacksListState();
+}
+
+class _ModpacksListState extends ConsumerState<ModpacksList> {
+  late final PagingController<int, ProjectResult> _pagingController;
+
+  Future<List<ProjectResult>> _fetchPage(int pageKey) async {
+    return (await ref.read(
+      modrinthModpacksProvider(page: pageKey).future,
+    )).hits;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _pagingController = PagingController<int, ProjectResult>(
+      getNextPageKey: (state) =>
+          state.lastPageIsEmpty ? null : state.nextIntPageKey,
+      fetchPage: (pageKey) async {
+        return _fetchPage(pageKey);
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _pagingController.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return PagingListener(
+      controller: _pagingController,
+      builder: (context, state, fetchNextPage) =>
+          PagedGridView<int, ProjectResult>(
+            state: state,
+            fetchNextPage: fetchNextPage,
+            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 4,
+            ),
+            builderDelegate: PagedChildBuilderDelegate(
+              itemBuilder: (context, item, index) => SizedBox(
+                width: 300,
+                height: 300,
+                child: ImageCard(title: Text(item.title ?? "no title")),
+              ),
+            ),
+          ),
     );
   }
 }
